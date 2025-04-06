@@ -1,6 +1,7 @@
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useInView,useTransform } from "framer-motion";
 
+// Example Work Experience Data
 const experienceData = [
   {
     title: "Software Engineer I",
@@ -26,13 +27,12 @@ const experienceData = [
       "Developed backend functionalities using Java and Node.js, ensuring high-performance data handling and API responsiveness.",
       "Proficiently translated Figma prototypes into front-end code and constructed templates, using Tailwind CSS.",
       "Conducted data processing for a dental clinic, processing 5,000 patient records and 50,000 billing entries.",
-      "Also optimized appointment scheduling and reduced data cleaning time by 40% using Python scripts",
+      "Also optimized appointment scheduling and reduced data cleaning time by 40% using Python scripts.",
     ],
   },
 ];
 
 export default function WorkExperienceTimelineCards() {
-  // Parallax effect for background image
   const { scrollYProgress } = useScroll();
   const backgroundImageY = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
@@ -40,26 +40,23 @@ export default function WorkExperienceTimelineCards() {
     <section
       className="relative w-full min-h-screen flex flex-col items-center py-20 px-6 overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/bg-img.png')", // Background image path
+        backgroundImage: "url('/bg-img.png')", // Work Experience Background Image
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-        backgroundSize: "cover",
+        backgroundAttachment: "fixed", // Keeps the background fixed while scrolling
+        backgroundSize: "cover", // Ensures it covers the section area
       }}
     >
       {/* Parallax effect on background */}
       <motion.div
         style={{
-          y: backgroundImageY, // Applying the parallax effect here
+          y: backgroundImageY,
         }}
         className="absolute inset-0 z-0"
       ></motion.div>
 
-      {/* Softer faded overlay */}
-      <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-0" />
-
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-purple-600 text-center mb-20">
+      <div className="relative z-10 flex flex-col items-center py-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-purple-600 text-center mb-20">
           Work Experience
         </h2>
 
@@ -73,11 +70,11 @@ export default function WorkExperienceTimelineCards() {
   );
 }
 
+// Experience Card component with Glass Effect
 function ExperienceCard({ item, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-100px" });
 
-  // ✨ Left or right animation depending on index
   const sideVariants = {
     hidden: {
       opacity: 0,
@@ -96,8 +93,12 @@ function ExperienceCard({ item, index }) {
       animate={isInView ? "show" : "hidden"}
       exit="hidden"
       variants={sideVariants}
-      transition={{ duration: 1.5, ease: "easeOut" }} // Slower transition
-      className="relative min-h-[600px] bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl shadow-2xl p-8 flex flex-col gap-8 overflow-hidden w-full md:max-w-xl"
+      transition={{ duration: 1.5, ease: "easeOut" }}
+      className="relative min-h-[600px] bg-white backdrop-blur-lg border border-white/40 opacity-50 rounded-3xl shadow-2xl p-8 flex flex-col gap-8 overflow-hidden w-full md:max-w-xl"
+      style={{
+        backdropFilter: "blur(10px)", // Glass effect (blurred background)
+        backgroundColor: "rgba(255, 255, 255, 0.3)", // Semi-transparent white background
+      }}
     >
       {/* Title and Date */}
       <div>
@@ -114,7 +115,6 @@ function ExperienceCard({ item, index }) {
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
       >
-        {/* Vertical Line */}
         <motion.div
           initial={{ height: 0 }}
           animate={isInView ? { height: "100%" } : { height: 0 }}
@@ -122,7 +122,6 @@ function ExperienceCard({ item, index }) {
           className="absolute top-0 left-3 w-px bg-purple-400"
         />
 
-        {/* Points */}
         {item.points
           .filter((point) => point.trim() !== "")
           .map((point, index) => (
@@ -139,24 +138,22 @@ const containerVariants = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 0.8, // Increased delay for slower reveal
-      staggerChildren: 0.25, // Slower stagger for points
+      delayChildren: 0.8,
+      staggerChildren: 0.25,
     },
   },
 };
 
-// Each timeline point
+// Timeline point component
 function TimelinePoint({ text }) {
   return (
     <motion.div
       variants={pointVariants}
       className="relative flex items-start gap-6"
     >
-      {/* Circle */}
       <div className="flex flex-col items-center">
         <div className="w-3.5 h-3.5 bg-purple-500 border-2 border-purple-300 rounded-full z-10" />
       </div>
-      {/* Text */}
       <p className="text-purple-700 text-sm md:text-base leading-relaxed max-w-[600px]">
         {text}
       </p>
@@ -164,7 +161,7 @@ function TimelinePoint({ text }) {
   );
 }
 
-// Animation for each point
+// Point animation
 const pointVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.8 },
   show: {

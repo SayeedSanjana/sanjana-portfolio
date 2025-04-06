@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import WorkExperience from "./components/WorkExperience";
 import Skills from "./components/Skills";
+
 // index.js
 import "./index.css";
 
