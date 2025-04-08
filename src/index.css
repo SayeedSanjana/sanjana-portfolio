@@ -147,3 +147,51 @@
 .icon-container:hover img {
   transform: scale(1.1); /* Scale up the icon */
 }
+.project-section {
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.rotate-wheel {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 150px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.education-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.education-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.max-w-7xl {
+  max-width: 96rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.space-y-12 > * {
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .rotate-wheel {
+    width: 100px;
+    height: 100px;
+  }
+  .education-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+

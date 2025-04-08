@@ -19,7 +19,8 @@ export default function Hero() {
   const contentY = useTransform(scrollYProgress, [0, 0.04], [0, -80]);
   const wheelY = useTransform(scrollYProgress, [0, 1], [0, 400]);
   const wheelRotate = useTransform(scrollYProgress, [0, 1], [0, 720]);
-  const wheelOpacity = useTransform(scrollYProgress, [0.01, 0.04], [0, 1]);
+  const wheelOpacity = useTransform(scrollYProgress, [0.02, 0.1], [0, 1]); // Only appear when scrolling starts
+
   const wheelScale = useTransform(scrollYProgress, [0.01, 0.04], [0.7, 1.2]);
 
   // Mouse tracking
@@ -86,10 +87,10 @@ export default function Hero() {
         style={{
           y: wheelY,
           rotate: wheelRotate,
-          opacity: wheelOpacity,
+          opacity: wheelOpacity, // Apply fading effect based on scroll position
           scale: wheelScale,
         }}
-        className="absolute top-1/2 left-1/2 w-[700px] h-[700px] -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
+        className="absolute top-1/2 left-1/2 w-[600px] h-[500px] -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
       >
         <img
           src="/wheel.svg"

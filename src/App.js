@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import WorkExperience from "./components/WorkExperience";
 import Skills from "./components/Skills";
 import Project from "./components/Project.jsx"
+import Education from "./components/Education.jsx"
 
 // index.js
 import "./index.css";
@@ -17,6 +18,7 @@ function App() {
       <WorkExperience />
       <Skills />
       <Project/>
+      <Education/>
     </div>
   );
 }
