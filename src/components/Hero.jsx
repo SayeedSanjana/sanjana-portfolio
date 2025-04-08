@@ -127,7 +127,7 @@ export default function Hero() {
           <div className="min-h-[120px]">
             <h1 className="text-5xl font-extrabold text-gray-900">
               Hey, I'm{" "}
-              <span className="inline-block min-w-[250px] text-purple-600">
+              <span className="inline-block min-w-[250px] text-purple-800">
                 <Typewriter
                   words={["Sanjana Sayeed"]}
                   loop={false}

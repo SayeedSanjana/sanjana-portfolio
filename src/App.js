@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import WorkExperience from "./components/WorkExperience";
 import Skills from "./components/Skills";
+import Project from "./components/Project.jsx"
 
 // index.js
 import "./index.css";
@@ -15,6 +16,7 @@ function App() {
       <Hero />
       <WorkExperience />
       <Skills />
+      <Project/>
     </div>
   );
 }

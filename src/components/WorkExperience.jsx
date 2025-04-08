@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useInView,useTransform } from "framer-motion";
+import { motion, useScroll, useInView, useTransform } from "framer-motion";
 
 // Example Work Experience Data
 const experienceData = [
@@ -38,7 +38,7 @@ export default function WorkExperienceTimelineCards() {
 
   return (
     <section
-      className="relative w-full min-h-screen flex flex-col items-center py-20 px-6 overflow-hidden bg-cover bg-center bg-no-repeat"
+      className="relative w-full min-h-screen flex flex-col items-center py-20 px-6 overflow-hidden bg-cover bg-center bg-no-repeat backdrop-blur-[25px] bg-white/30"
       style={{
         backgroundImage: "url('/bg-img.png')", // Work Experience Background Image
         backgroundPosition: "center",
@@ -55,8 +55,8 @@ export default function WorkExperienceTimelineCards() {
       ></motion.div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center py-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-purple-600 text-center mb-20">
+      <div className="relative z-10 flex flex-col items-center py-10 ">
+        <h2 className="text-3xl md:text-4xl font-bold text-purple-800 text-center mb-20">
           Work Experience
         </h2>
 

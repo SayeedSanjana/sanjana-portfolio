@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Particles from "react-tsparticles"; // Import particles
 import AuroraBackground from "./AuroraBackground"; // Import the AuroraBackground component
 
-// Array of tech icons
+// Array of tech icons (Skills)
 const techIcons = [
   "https://img.icons8.com/color/48/000000/javascript.png", // JavaScript
   "https://img.icons8.com/color/48/000000/nodejs.png", // Node.js
@@ -53,52 +52,17 @@ export default function SkillsSection() {
       );
     }, 3000);
 
-    // Cleanup the interval when the component unmounts
     return () => clearInterval(interval);
   }, []);
 
   return (
     <AuroraBackground className="relative z-0 py-10">
-      {/* Particles background */}
-      <Particles
-        id="particles-js"
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100vh", // Full viewport height
-          zIndex: -1, // Ensure particles are behind the content
-        }}
-        options={{
-          particles: {
-            number: {
-              value: 40, // Reduced the number of particles for better performance
-              density: { enable: true, value_area: 800 },
-            },
-            shape: {
-              type: "circle", // Shape of particles
-            },
-            size: {
-              value: 3, // Particle size
-              random: true, // Random sizes
-            },
-            move: {
-              speed: 1, // Speed of particle movement
-              direction: "none", // Allows particles to move in random directions
-              outMode: "out", // Particles go outside of the canvas bounds
-            },
-          },
-        }}
-      />
-
-      <h2 className="text-3xl md:text-4xl font-bold text-purple-600 text-center mb-10 z-10">
-        Skills and Expertise
-      </h2>
-
-      {/* Skills Section Content with Glassmorphism */}
       <div className="w-full max-w-screen-lg overflow-hidden z-10">
-        <div className="relative w-full max-w-screen-lg py-20 flex flex-col items-center justify-center backdrop-blur-[25px] bg-white/30 rounded-xl shadow-lg z-10">
+        <div className="relative w-full max-w-screen-lg py-20 flex flex-col items-center justify-center  rounded-xl shadow-lg z-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-purple-800 text-center mb-10">
+            Skills and Expertise
+          </h2>
+
           {/* Row 1 */}
           <motion.div
             className="flex space-x-10 justify-center"
