@@ -38,27 +38,36 @@ export default function WorkExperienceTimelineCards() {
 
   return (
     <section
-      className="relative w-full min-h-screen flex flex-col items-center py-20 px-6 overflow-hidden bg-cover bg-center bg-no-repeat backdrop-blur-[25px] bg-white/30"
+      className="relative w-full min-h-screen flex flex-col items-center py-20 px-6 overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/bg-img.png')", // Work Experience Background Image
+        backgroundImage: "url('/bg-img.png')",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed", // Keeps the background fixed while scrolling
-        backgroundSize: "cover", // Ensures it covers the section area
+        backgroundAttachment: "fixed",
+        backgroundSize: "cover",
       }}
     >
       {/* Parallax effect on background */}
       <motion.div
         style={{
           y: backgroundImageY,
+          opacity: 0.7, // ⬅️ DARKER opacity here
         }}
         className="absolute inset-0 z-0"
-      ></motion.div>
+      >
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-lg" />{" "}
+        {/* ⬅️ Slight dark blur overlay */}
+      </motion.div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center py-10 ">
-        <h2 className="text-3xl md:text-4xl font-bold text-purple-800 text-center mb-20">
+      <div className="relative z-10 flex flex-col items-center py-20 md:py-40">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-3xl md:text-4xl font-bold text-purple-800 text-center mb-20"
+        >
           Work Experience
-        </h2>
+        </motion.h2>
 
         <div className="relative max-w-7xl w-full flex flex-col md:flex-row md:justify-center md:gap-10 gap-20">
           {experienceData.map((item, index) => (
@@ -70,7 +79,6 @@ export default function WorkExperienceTimelineCards() {
   );
 }
 
-// Experience Card component with Glass Effect
 function ExperienceCard({ item, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-100px" });
@@ -78,7 +86,7 @@ function ExperienceCard({ item, index }) {
   const sideVariants = {
     hidden: {
       opacity: 0,
-      x: index % 2 === 0 ? -100 : 100, // left or right
+      x: index % 2 === 0 ? -100 : 100,
     },
     show: {
       opacity: 1,
@@ -94,10 +102,10 @@ function ExperienceCard({ item, index }) {
       exit="hidden"
       variants={sideVariants}
       transition={{ duration: 1.5, ease: "easeOut" }}
-      className="relative min-h-[600px] bg-white backdrop-blur-lg border border-white/40 opacity-50 rounded-3xl shadow-2xl p-8 flex flex-col gap-8 overflow-hidden w-full md:max-w-xl"
+      className="relative min-h-[600px] bg-white backdrop-blur-lg border border-white/40 opacity-70 rounded-3xl shadow-2xl p-8 flex flex-col gap-8 overflow-hidden w-full md:max-w-xl"
       style={{
-        backdropFilter: "blur(10px)", // Glass effect (blurred background)
-        backgroundColor: "rgba(255, 255, 255, 0.3)", // Semi-transparent white background
+        backdropFilter: "blur(10px)",
+        backgroundColor: "rgba(255, 255, 255, 0.35)", // slightly darker card
       }}
     >
       {/* Title and Date */}
@@ -115,6 +123,7 @@ function ExperienceCard({ item, index }) {
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
       >
+        {/* Vertical Line */}
         <motion.div
           initial={{ height: 0 }}
           animate={isInView ? { height: "100%" } : { height: 0 }}
@@ -132,7 +141,6 @@ function ExperienceCard({ item, index }) {
   );
 }
 
-// Container variants for points
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {
@@ -144,7 +152,6 @@ const containerVariants = {
   },
 };
 
-// Timeline point component
 function TimelinePoint({ text }) {
   return (
     <motion.div
@@ -161,7 +168,6 @@ function TimelinePoint({ text }) {
   );
 }
 
-// Point animation
 const pointVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.8 },
   show: {

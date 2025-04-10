@@ -1,171 +1,156 @@
 import React, { useRef } from "react";
-import { useScroll, useTransform, motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
 const Publication = () => {
-  const { scrollYProgress } = useScroll();
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
 
-  // Parallax effect for background movement
-  const parallaxEffect = useTransform(scrollYProgress, [0, 1], [0, -10]);
+  const parallaxEffect = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
+  const publications = [
+    {
+      title:
+        "Shapley-Additive-Explanations-Based Factor Analysis for Dengue Severity Prediction using Machine Learning",
+      description:
+        "Dengue is a major public health concern in tropical and subtropical regions, often leading to severe conditions such as Dengue Haemorrhagic Fever (DHF) and Dengue Shock Syndrome (DSS). In this study, we leverage machine learning approaches to analyze two real-world datasets from Vietnam and Bangladesh. We apply supervised learning techniques, particularly XGBoost coupled with SHAP explainability, to structured data for predictive modeling, while utilizing unsupervised hierarchical clustering to uncover hidden patterns within unstructured clinical datasets, aiming to identify critical factors associated with disease severity.",
+      tech: "Shapley Additive Explanation | XGBoosting | Hierarchical clustering | Supervised | Unsupervised",
+    },
+  ];
 
   return (
-    <div className="education-section py-0 h-screen relative" id="education">
-      {/* Background image with parallax effect */}
+    <div
+      id="publications"
+      ref={sectionRef}
+      className="relative py-28 min-h-screen overflow-visible"
+    >
+      {/* Background */}
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url("/bg-img2.png")', // Replace with your background image URL
+          backgroundImage: "url('/bg-img3.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          y: parallaxEffect, // Applying parallax effect here
+          backgroundAttachment: "scroll",
+          y: parallaxEffect,
+          opacity: bgOpacity,
         }}
       >
-        <div className="absolute inset-0 bg-opacity-10 bg-purple-200"></div>{" "}
-        {/* Optional dark overlay */}
+        <div className="absolute inset-0 bg-purple-50/10" />
       </motion.div>
 
-      {/* Centered Education content */}
-      <div className="relative z-10 flex items-center justify-center h-full">
-        <div className="max-w-7xl mx-auto px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-purple-800 mb-20">
-            Publication
-          </h2>
+      {/* Main Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 flex flex-col justify-center min-h-[80vh]">
+        <h2 className="text-3xl md:text-4xl font-bold text-purple-300 text-center mb-24">
+          Publication
+        </h2>
 
-          {/* Timeline Section */}
-          <div className="relative">
-            <motion.div
-              className="absolute top-0 left-0 w-[4px] bg-purple-300" // Styling the line
-              style={{
-                height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]), // Animate the height
-              }}
-            ></motion.div>
-
-            {/* Timeline Items */}
-            <div className="space-y-16 px-4">
-              <TimelineItem
-                title="Master of Engineering in Software Engineering"
-                institution="Concordia University, Montreal, Canada"
-                date="Winter 2023 - Fall 2024"
-                courses={[
-                  "Distributed System Design",
-                  "Total Quality Methodologies in Engineering",
-                  "Software Quality Assurance",
-                  "Advanced Programming Practices",
-                  "Software Comprehension and Maintenance",
-                  "Software Project Management",
-                  "Problem and Program Solving",
-                  "Software Design Methodologies",
-                  "Software Requirements Specification",
-                  "Software Measurement",
-                ]}
-              />
-              <TimelineItem
-                title="Bachelor of Science in Computer Science and Engineering"
-                institution="Brac University, Dhaka, Bangladesh"
-                date="Spring 2017 - Fall 2020"
-                courses={[
-                  "Data Structures",
-                  "Algorithms",
-                  "Database Systems",
-                  "Artificial Intelligence",
-                  "System Analysis and Design",
-                  "Software Engineering",
-                  "Digital Signal Processing",
-                  "Discrete Mathematics",
-                  "Computer Architecture",
-                  "Computer Graphics",
-                ]}
-              />
-            </div>
-          </div>
-        </div>
+        {publications.map((publication, index) => (
+          <FeaturedPublicationCard key={index} {...publication} />
+        ))}
       </div>
     </div>
   );
 };
 
-const TimelineItem = ({ title, institution, date, courses }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "-100px" });
+const FeaturedPublicationCard = ({ title, description, tech }) => {
+  const cardRef = useRef(null);
+  const isInView = useInView(cardRef, { margin: "-100px" });
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -100 }, // Slide from left
-    show: { opacity: 1, x: 0 },
-  };
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-5, 5]);
 
   return (
     <motion.div
-      ref={ref}
+      ref={cardRef}
       initial="hidden"
       animate={isInView ? "show" : "hidden"}
-      exit="hidden"
-      variants={itemVariants}
-      transition={{ duration: 1.5, ease: "easeOut" }}
-      className="flex  space-x-4"
+      variants={{
+        hidden: { opacity: 0, y: 100 },
+        show: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: "easeOut" },
+        },
+      }}
+      className="relative flex flex-col lg:flex-row items-center justify-between gap-8 bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg overflow-visible"
     >
-      <div className="w-4 h-4 bg-purple-600 rounded-full mt-1 z-10"></div>
-      <div className="flex-1  text-left">
-        <h3 className="text-xl font-bold text-purple-600">{title}</h3>
-        <p className="text-lg text-gray-700">{institution}</p>
-        <p className="text-sm text-gray-600 mb-4">{date}</p>
+      {/* Left Text */}
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        className="flex-1 text-white md:pr-72"
+      >
+        <h3 className="text-2xl font-bold mb-4 text-purple-300">{title}</h3>
+        <p className="text-base mb-6 text-gray-300">{description}</p>
+        <p className="text-sm text-purple-400">{tech}</p>
+      </motion.div>
 
-        {/* Notable Courses */}
-        <div className="text-center mb-8">
-          <div className="flex justify-start gap-4 flex-wrap">
-            {courses.map((course, index) => (
-              <span
-                key={index}
-                className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md"
+      {/* Right Floating Card */}
+      {/* Right Floating Card */}
+      <div className="relative w-full flex justify-center lg:justify-end lg:w-auto lg:absolute lg:right-[-100px] lg:top-1/2 lg:-translate-y-1/2">
+        <motion.div
+          style={{ y }}
+          initial={{ opacity: 0, x: 100 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0px 20px 40px rgba(170, 100, 255, 0.4)",
+            transition: { duration: 0.4 },
+          }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+          className="w-[280px] md:w-[320px] h-[500px] md:h-[600px] bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl flex flex-col items-center justify-center gap-6 p-6 cursor-pointer"
+        >
+          <div className="text-white text-center space-y-4">
+            <p className="text-lg font-semibold">
+              PMID: <span className="font-normal">36135395</span>
+            </p>
+
+            <div>
+              <a
+                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9506144/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-purple-300 transition"
               >
-                {course}
-              </span>
-            ))}
+                PMCID: PMC9506144
+              </a>
+            </div>
+
+            <div>
+              <a
+                href="https://www.mdpi.com/2313-433X/8/9/229"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-purple-300 transition"
+              >
+                DOI: 10.3390/jimaging8090229
+              </a>
+            </div>
+
+            <div className="pt-6">
+              <a
+                href="https://github.com/your-github-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-3 text-sm font-bold text-purple-700 bg-white rounded-full border-2 border-purple-500 hover:bg-purple-600 hover:text-white transition duration-300 shadow-md"
+              >
+                Visit GitHub
+              </a>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
-};
-
-// Container variants for points
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delayChildren: 1.2, // Increased delay to slow down the appearance of the points
-      staggerChildren: 0.6, // Increased delay to slow down each point's appearance
-    },
-  },
-};
-
-// Timeline point component
-function TimelinePoint({ text }) {
-  return (
-    <motion.div
-      variants={pointVariants}
-      className="relative flex items-start gap-6"
-    >
-      <div className="flex flex-col items-start">
-        {" "}
-        {/* Points aligned to the left */}
-        <div className="w-3.5 h-3.5 bg-purple-500 border-2 border-purple-300 rounded-full z-10" />
-      </div>
-      <p className="text-purple-700 text-sm md:text-base leading-relaxed max-w-[600px]">
-        {text}
-      </p>
-    </motion.div>
-  );
-}
-
-// Point animation
-const pointVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.8 },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
 };
 
 export default Publication;

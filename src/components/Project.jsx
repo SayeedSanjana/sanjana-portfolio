@@ -619,7 +619,7 @@ const Project = () => {
       }}
     >
       <div className="absolute inset-0 bg-gray-400 opacity-30 z-0" />
-      <div className="relative max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10 z-10">
+      <div className="relative max-w-7xl mx-auto py-20 md:py-40  px-4 md:px-8 lg:px-10 z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-purple-900 text-center mb-5">
           Projects
         </h2>
@@ -631,14 +631,14 @@ const Project = () => {
         </p>
       </div>
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-80">
+      <div ref={ref} className="relative max-w-7xl mx-auto pb-60 md:pb-80 ">
         {data.map((item, index) => (
-          <div key={index} className="flex justify-start pt-10 md:gap-10 pb-10">
+          <div key={index} className="flex justify-start pt-5 md:gap-10 pb-10">
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-purple-600 flex items-center justify-center">
                 <div className="h-4 w-4 rounded-full bg-purple-400 border-neutral-300 p-2" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500">
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl lg:text-5xl font-bold text-neutral-500">
                 {item.title}
               </h3>
             </div>
@@ -672,10 +672,10 @@ const Project = () => {
         style={{
           y: wheelY,
           rotate: wheelRotate,
-          opacity: wheelOpacity, // Applied opacity here for fading effect
+          opacity: wheelOpacity,
           scale: wheelScale,
         }}
-        className="absolute bottom-[100px] left-1/2 w-[800px] h-[550px] -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none bg-transparent"
+        className="absolute bottom-[80px] left-1/2 w-[250px] sm:w-[600px] md:w-[800px] h-[400px] sm:h-[400px] md:h-[550px] -translate-x-1/2 translate-y-0 z-0 pointer-events-none bg-transparent"
       >
         <img
           src="/wheel2.svg"

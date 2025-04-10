@@ -1,6 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-// import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function Hero() {
@@ -9,7 +8,7 @@ export default function Hero() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [isHoveringImage, setIsHoveringImage] = useState(false);
 
-  // 🎯 Scroll animations — FASTER and smoother
+  // Scroll animations
   const backgroundImageOpacity = useTransform(
     scrollYProgress,
     [0.01, 0.04],
@@ -18,12 +17,11 @@ export default function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.04], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.04], [0, -80]);
   const wheelY = useTransform(scrollYProgress, [0, 1], [0, 400]);
-  const wheelRotate = useTransform(scrollYProgress, [0, 1], [0, 720]);
-  const wheelOpacity = useTransform(scrollYProgress, [0.02, 0.1], [0, 1]); // Only appear when scrolling starts
-
+  const wheelRotate = useTransform(scrollYProgress, [0, 1], [0, 1080]); // 3 full rotations 🎯
+  const wheelOpacity = useTransform(scrollYProgress, [0.02, 0.1], [0, 1]);
   const wheelScale = useTransform(scrollYProgress, [0.01, 0.04], [0.7, 1.2]);
 
-  // Mouse tracking
+  // Mouse tracking for blob
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMouse({ x: e.clientX, y: e.clientY });
@@ -54,7 +52,7 @@ export default function Hero() {
       <motion.div
         style={{
           opacity: backgroundImageOpacity,
-          backgroundImage: "url('/hero-bg.png')", // Update your image path if needed
+          backgroundImage: "url('/hero-bg.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -82,15 +80,15 @@ export default function Hero() {
         }}
       />
 
-      {/* Wheel (fade + move + rotate + scale) */}
+      {/* Wheel - keep original center position */}
       <motion.div
         style={{
           y: wheelY,
           rotate: wheelRotate,
-          opacity: wheelOpacity, // Apply fading effect based on scroll position
+          opacity: wheelOpacity,
           scale: wheelScale,
         }}
-        className="absolute top-1/2 left-1/2 w-[600px] h-[500px] -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
+        className="absolute top-[70%] sm:top-[60%] md:top-1/2 left-1/2 w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
       >
         <img
           src="/wheel.svg"
@@ -121,12 +119,12 @@ export default function Hero() {
       {/* Hero Content */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-20 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto p-8 cursor-none"
+        className="relative z-20 flex flex-col lg:flex-row items-center justify-center max-w-7xl mx-auto p-8 cursor-none"
       >
-        {/* Left Side */}
-        <div className="flex flex-col gap-6 max-w-xl">
+        {/* Left Side - Text */}
+        <div className="flex flex-col gap-6 max-w-xl text-center lg:text-left">
           <div className="min-h-[120px]">
-            <h1 className="text-5xl font-extrabold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
               Hey, I'm{" "}
               <span className="inline-block min-w-[250px] text-purple-800">
                 <Typewriter
@@ -141,7 +139,7 @@ export default function Hero() {
               </span>
             </h1>
           </div>
-          <h2 className="text-2xl font-semibold text-gray-700">
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-700">
             Software Engineer | Fullstack Developer
           </h2>
           <p className="text-gray-600">
@@ -154,7 +152,7 @@ export default function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4">
             <a
               href="/SanjanaSayeed--Resume.pdf"
               target="_blank"
@@ -171,13 +169,13 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Side - Profile Image */}
+        {/* Right Side - Image */}
         <div
-          className="relative mt-10 md:mt-0 group w-[600px] h-auto flex items-center justify-center"
+          className="relative mt-10 lg:mt-0 group w-[300px] sm:w-[400px] md:w-[500px] flex items-center justify-center"
           onMouseEnter={() => setIsHoveringImage(true)}
           onMouseLeave={() => setIsHoveringImage(false)}
         >
-          <div className="absolute w-[400px] h-[400px] bg-gradient-radial from-purple-400/70 to-transparent opacity-0 scale-75 blur-3xl rounded-full transition-all duration-700 group-hover:opacity-100 group-hover:scale-100" />
+          <div className="absolute w-80 h-80 bg-gradient-radial from-purple-400/70 to-transparent opacity-0 scale-75 blur-3xl rounded-full transition-all duration-700 group-hover:opacity-100 group-hover:scale-100" />
           <img
             src="/sanjana1.png"
             alt="Sanjana Sayeed"
