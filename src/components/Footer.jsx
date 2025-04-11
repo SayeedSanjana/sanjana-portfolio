@@ -5,22 +5,25 @@ export default function Footer() {
   const footerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: footerRef,
-    offset: ["start end", "end start"], // Footer animation based on scroll position
+    offset: ["start end", "end start"],
   });
 
-  // Parallax slow vertical movement
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 100]); // Adjust this for more/less effect
+  // Softer parallax
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
   return (
-    <footer ref={footerRef} className="relative overflow-hidden pt-12 pb-6">
-      {/* Background with Parallax */}
+    <footer
+      ref={footerRef}
+      className="relative overflow-hidden overflow-x-hidden overflow-y-hidden pt-12 pb-8 w-full"
+    >
+      {/* Parallax Background */}
       <motion.div
-        className="absolute inset-0 z-0 bg-gradient-to-r from-purple-800 via-purple-900 to-indigo-900"
+        className="absolute inset-0 z-0 w-full h-full bg-gradient-to-r from-purple-800 via-purple-900 to-indigo-900"
         style={{ y: parallaxY }}
       />
 
       {/* Main Footer Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,12 +48,11 @@ export default function Footer() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg text-purple-200"
             >
-              Find me on any platform. I will get back to you as soon as
-              possible!
+              Find me on any platform. I will get back to you as soon as possible!
             </motion.h5>
+
             {/* Social Icons */}
             <div className="flex gap-4 mt-6">
-              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/sanjana-sayeed/"
                 target="_blank"
@@ -59,8 +61,6 @@ export default function Footer() {
               >
                 <i className="fab fa-linkedin-in text-xl"></i>
               </a>
-
-              {/* GitHub */}
               <a
                 href="https://github.com/SayeedSanjana"
                 target="_blank"
@@ -69,8 +69,6 @@ export default function Footer() {
               >
                 <i className="fab fa-github text-xl"></i>
               </a>
-
-              {/* Facebook */}
               <a
                 href="https://facebook.com/"
                 target="_blank"
@@ -79,8 +77,6 @@ export default function Footer() {
               >
                 <i className="fab fa-facebook-f text-xl"></i>
               </a>
-
-              {/* Instagram */}
               <a
                 href="https://instagram.com/"
                 target="_blank"
@@ -93,7 +89,7 @@ export default function Footer() {
           </div>
 
           {/* Right Section */}
-          <div className="flex flex-wrap gap-8 md:w-1/2 justify-start md:justify-end">
+          <div className="flex flex-wrap gap-8 md:w-1/2 justify-start md:justify-end mt-4">
             {/* Useful Links */}
             <div>
               <h6 className="uppercase text-purple-300 text-sm font-bold mb-4">
@@ -101,26 +97,17 @@ export default function Footer() {
               </h6>
               <ul className="space-y-2">
                 <li>
-                  <a
-                    href="#about"
-                    className="text-purple-200 hover:text-white transition"
-                  >
+                  <a href="#about" className="text-purple-200 hover:text-white transition">
                     About Me
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#projects"
-                    className="text-purple-200 hover:text-white transition"
-                  >
+                  <a href="#projects" className="text-purple-200 hover:text-white transition">
                     Projects
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#skills"
-                    className="text-purple-200 hover:text-white transition"
-                  >
+                  <a href="#skills" className="text-purple-200 hover:text-white transition">
                     Skills
                   </a>
                 </li>
@@ -137,6 +124,7 @@ export default function Footer() {
                   <a
                     href="https://github.com/SayeedSanjana"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-purple-200 hover:text-white transition"
                   >
                     GitHub
@@ -146,6 +134,7 @@ export default function Footer() {
                   <a
                     href="/SanjanaSayeed--Resume.pdf"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-purple-200 hover:text-white transition"
                   >
                     Resume

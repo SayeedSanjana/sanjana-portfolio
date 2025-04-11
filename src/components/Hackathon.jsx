@@ -50,6 +50,13 @@ const Hackathon = () => {
                 description="At ConUHacks, one of the largest collegiate hackathons in Canada held at Concordia University in Montreal, I had the opportunity to participate in SAP’s Wildfire Response Prediction Challenge — a company-sponsored competition aimed at leveraging AI for disaster management. Our team strategically selected this real-world challenge and built a real-time predictive model to anticipate wildfire spread and optimize emergency response strategies. Throughout the intense 24-hour event, I not only deepened my technical expertise in machine learning and real-time data analytics but also strengthened my adaptability and critical thinking skills under pressure. Above all, the experience reinforced the importance of effective collaboration, teamwork, and agile problem-solving in high-stakes, fast-paced environments."
                 githubLink="https://github.com/your-github-link"
               />
+              <TimelineItem
+                title="JACHacks"
+                institution="John Abbott College, Montreal, Canada"
+                date="April 2025"
+                description=""
+                githubLink="https://github.com/your-github-link"
+              />
             </div>
           </div>
         </div>

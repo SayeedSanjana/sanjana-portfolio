@@ -43,7 +43,7 @@ const Publication = () => {
       </motion.div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 flex flex-col justify-center min-h-[80vh]">
+      <div className="relative z-10 max-w-7xl mx-auto px-8 flex flex-col justify-center min-h-[80vh]">
         <h2 className="text-3xl md:text-4xl font-bold text-purple-300 text-center mb-24">
           Publication
         </h2>
@@ -80,14 +80,14 @@ const FeaturedPublicationCard = ({ title, description, tech }) => {
           transition: { duration: 0.6, ease: "easeOut" },
         },
       }}
-      className="relative flex flex-col lg:flex-row items-center justify-between gap-8 bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg overflow-visible"
+      className="relative flex flex-col xl:flex-row items-center justify-between gap-8 bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg overflow-visible"
     >
       {/* Left Text */}
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-        className="flex-1 text-white md:pr-72"
+        className="flex-1 text-white text-center xl:text-left xl:pr-72"
       >
         <h3 className="text-2xl font-bold mb-4 text-purple-300">{title}</h3>
         <p className="text-base mb-6 text-gray-300">{description}</p>
@@ -95,8 +95,9 @@ const FeaturedPublicationCard = ({ title, description, tech }) => {
       </motion.div>
 
       {/* Right Floating Card */}
-      {/* Right Floating Card */}
-      <div className="relative w-full flex justify-center lg:justify-end lg:w-auto lg:absolute lg:right-[-100px] lg:top-1/2 lg:-translate-y-1/2">
+      {/* Different placement depending on screen size */}
+      <div className="hidden xl:block absolute right-[-100px] top-1/2 transform -translate-y-1/2">
+        {/* Floating card for XL and bigger */}
         <motion.div
           style={{ y }}
           initial={{ opacity: 0, x: 100 }}
@@ -107,50 +108,74 @@ const FeaturedPublicationCard = ({ title, description, tech }) => {
             transition: { duration: 0.4 },
           }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-          className="w-[280px] md:w-[320px] h-[500px] md:h-[600px] bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl flex flex-col items-center justify-center gap-6 p-6 cursor-pointer"
+          className="w-[320px] h-[600px] bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl flex flex-col items-center justify-center gap-6 p-6 cursor-pointer"
         >
-          <div className="text-white text-center space-y-4">
-            <p className="text-lg font-semibold">
-              PMID: <span className="font-normal">36135395</span>
-            </p>
+          <FloatingCardContent />
+        </motion.div>
+      </div>
 
-            <div>
-              <a
-                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9506144/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-purple-300 transition"
-              >
-                PMCID: PMC9506144
-              </a>
-            </div>
-
-            <div>
-              <a
-                href="https://www.mdpi.com/2313-433X/8/9/229"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-purple-300 transition"
-              >
-                DOI: 10.3390/jimaging8090229
-              </a>
-            </div>
-
-            <div className="pt-6">
-              <a
-                href="https://github.com/your-github-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-6 py-3 text-sm font-bold text-purple-700 bg-white rounded-full border-2 border-purple-500 hover:bg-purple-600 hover:text-white transition duration-300 shadow-md"
-              >
-                Visit GitHub
-              </a>
-            </div>
-          </div>
+      {/* Card below text for screens smaller than XL */}
+      <div className="block xl:hidden w-full flex justify-center">
+        <motion.div
+          style={{ y }}
+          initial={{ opacity: 0, y: 100 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0px 20px 40px rgba(170, 100, 255, 0.4)",
+            transition: { duration: 0.4 },
+          }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+          className="w-[320px] h-[600px] bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl flex flex-col items-center justify-center gap-6 p-6 cursor-pointer mt-8"
+        >
+          <FloatingCardContent />
         </motion.div>
       </div>
     </motion.div>
   );
 };
+
+// Floating Card Content
+const FloatingCardContent = () => (
+  <div className="text-white text-center space-y-4">
+    <p className="text-lg font-semibold">
+      PMID: <span className="font-normal">36135395</span>
+    </p>
+
+    <div>
+      <a
+        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9506144/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline hover:text-purple-300 transition"
+      >
+        PMCID: PMC9506144
+      </a>
+    </div>
+
+    <div>
+      <a
+        href="https://www.mdpi.com/2313-433X/8/9/229"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline hover:text-purple-300 transition"
+      >
+        DOI: 10.3390/jimaging8090229
+      </a>
+    </div>
+
+    <div className="pt-6">
+      <a
+        href="https://github.com/your-github-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block px-6 py-3 text-sm font-bold text-purple-700 bg-white rounded-full border-2 border-purple-500 hover:bg-purple-600 hover:text-white transition duration-300 shadow-md"
+      >
+        Visit GitHub
+      </a>
+    </div>
+  </div>
+);
+
 
 export default Publication;

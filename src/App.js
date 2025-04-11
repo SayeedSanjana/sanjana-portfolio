@@ -8,6 +8,7 @@ import Publication from "./components/Publications";
 import Hackathon from "./components/Hackathon";
 import Volunteer from "./components/Volunteers";
 import Footer from "./components/Footer";
+import GithubStats from "./components/GithubStats";
 
 // index.js
 import "./index.css";
@@ -16,7 +17,7 @@ import "./index.css";
 
 function App() {
   return (
-    <div className="font-sans overflow-x-hidden">
+    <div className="font-sans overflow-x-auto md:overflow-x-visible">
       <Navbar />
       <Hero />
       <WorkExperience />
@@ -26,7 +27,8 @@ function App() {
       <Publication />
       <Hackathon />
       <Volunteer />
-      <Footer/>
+      <GithubStats />
+      <Footer />
     </div>
   );
 }

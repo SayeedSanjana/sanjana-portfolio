@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa"; // Social media icons
+import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,26 +12,41 @@ export default function Navbar() {
     visible: {
       x: 0,
       opacity: 1,
-      transition: { type: "spring", stiffness: 80, damping: 20 },
+      transition: { type: "spring", stiffness: 70, damping: 18 },
     },
     exit: {
       x: "100%",
       opacity: 0,
-      transition: { duration: 0.7, ease: "easeInOut" },
+      transition: { duration: 0.6, ease: "easeInOut" },
     },
   };
 
   const linkVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, x: 100, y: 20 }, // Start right + little down
     visible: (i) => ({
       opacity: 1,
+      x: 0,
       y: 0,
       transition: {
-        delay: i * 0.15,
-        duration: 0.5,
-        ease: "easeOut",
+        delay: i * 0.3,       // Slower and smoother
+        duration: 0.8,        // Long smooth floaty
+        type: "spring",       // Soft spring effect
+        stiffness: 50,        // Soft bounce
+        damping: 12,          // Slow stop
       },
     }),
+    exit: { opacity: 0, x: 100, transition: { duration: 0.4 } }, // Exit smoothly
+  };
+  
+  
+
+  const socialVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 1, duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const handleOpen = () => {
@@ -52,12 +67,11 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Navbar */}
+      {/* Navbar Top Right */}
       <div className="fixed top-0 right-0 z-50 flex items-center justify-end p-4 w-full">
-        {/* Social Media Icons and Hamburger Menu */}
         <div className="flex gap-4 items-center">
-          {/* Social Media Icons */}
-          <div className="flex gap-4">
+          {/* Social Icons - hidden on mobile */}
+          <div className="hidden sm:flex gap-4">
             <a
               href="https://github.com/SayeedSanjana"
               target="_blank"
@@ -92,7 +106,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Hamburger Menu Button */}
+          {/* Hamburger */}
           {!isOpen && (
             <motion.div
               className="p-4"
@@ -113,7 +127,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Dark blurred background */}
+      {/* Blur Background */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -127,17 +141,17 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Drawer Menu (Glass effect, partial width, full height) */}
+      {/* Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed top-0 right-0 h-screen w-3/4 md:w-1/3 bg-white bg-opacity-60 backdrop-blur-2xl shadow-2xl rounded-l-3xl flex flex-col items-center justify-center gap-10 p-8 z-50"
+            className="fixed top-0 right-0 h-screen w-3/4 md:w-1/3 bg-white bg-opacity-60 backdrop-blur-2xl shadow-2xl rounded-l-3xl flex flex-col justify-between py-10 px-6 z-50"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
-            {/* Cross button */}
+            {/* Close button */}
             <motion.button
               className="absolute top-6 right-6 text-purple-600 text-5xl md:text-4xl focus:outline-none"
               onClick={handleClose}
@@ -148,29 +162,73 @@ export default function Navbar() {
             </motion.button>
 
             {/* Navigation Links */}
-            {[
-              "Home",
-              "Work Experience",
-              "Skills and Expertise",
-              "Projects",
-              "Education",
-              "Hackathons and Competition",
-              "Publications",
-            ].map((text, index) => (
-              <motion.a
-                key={text}
-                href={`#${text.toLowerCase()}`}
-                className="text-purple-700 text-xl text-center md:text-2xl font-semibold hover:text-purple-800 transition-all duration-300"
-                variants={linkVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                custom={index}
-                onClick={handleClose}
+            <div className="flex flex-col gap-8">
+              {[
+                "Home",
+                "Work Experience",
+                "Skills and Expertise",
+                "Projects",
+                "Education",
+                "Hackathons and Competition",
+                "Publications",
+              ].map((text, index) => (
+                <motion.a
+                  key={text}
+                  href={`#${text.toLowerCase().replace(/\s/g, "-")}`}
+                  className="text-purple-700 text-xl text-center md:text-2xl font-semibold hover:text-purple-800 transition-all duration-300"
+                  variants={linkVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  custom={index}
+                  onClick={handleClose}
+                >
+                  {text}
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Social Icons inside drawer (only visible here for mobile) */}
+            <motion.div
+              className="flex justify-center gap-6 pt-8 sm:hidden"
+              variants={socialVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
+              <a
+                href="https://github.com/SayeedSanjana"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl text-purple-700 hover:text-black transition-all"
               >
-                {text}
-              </motion.a>
-            ))}
+                <FaGithub />
+              </a>
+              <a
+                href="https://linkedin.com/in/sanjana-sayeed-917b12135"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl text-purple-700 hover:text-blue-600 transition-all"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href="https://instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl text-purple-700 hover:text-pink-500 transition-all"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl text-purple-700 hover:text-blue-600 transition-all"
+              >
+                <FaFacebook />
+              </a>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -612,9 +612,9 @@ const Project = () => {
 
   return (
     <div
-      className="w-full bg-cover bg-center bg-no-repeat font-sans md:px-10 relative "
+      className="w-full bg-cover bg-center bg-no-repeat font-sans md:px-10 relative " // 👈 ADD overflow-visible here
       style={{
-        backgroundImage: 'url("/bg-img.png")', // Replace with your image URL
+        backgroundImage: 'url("/bg-img.png")',
         backgroundAttachment: "fixed",
       }}
     >
@@ -675,13 +675,27 @@ const Project = () => {
           opacity: wheelOpacity,
           scale: wheelScale,
         }}
-        className="absolute bottom-[80px] left-1/2 w-[250px] sm:w-[600px] md:w-[800px] h-[400px] sm:h-[400px] md:h-[550px] -translate-x-1/2 translate-y-0 z-0 pointer-events-none bg-transparent"
+        className="absolute 
+    bottom-60 left-[18%]
+    sm:bottom-40 sm:left-[22%]
+    md:bottom-32 md:left-[30%]
+    lg:bottom-20 lg:left-1/2
+    -translate-x-1/2 z-0 pointer-events-none"
       >
-        <img
-          src="/wheel2.svg"
-          alt="Wheel"
-          className="w-full h-full object-contain"
-        />
+        <div
+          className="relative 
+    w-[50vw] max-w-[200px]
+    sm:w-[60vw] sm:max-w-[250px]
+    md:w-[60vw] md:max-w-[350px]
+    lg:w-[60vw] lg:max-w-[500px]
+    xl:w-[60vw] xl:max-w-[600px]"
+        >
+          <img
+            src="/wheel2.svg"
+            alt="Rotating Wheel"
+            className="w-full h-auto object-contain opacity-60"
+          />
+        </div>
       </motion.div>
     </div>
   );
