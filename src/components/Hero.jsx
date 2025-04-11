@@ -17,9 +17,14 @@ export default function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.04], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.04], [0, -80]);
   const wheelY = useTransform(scrollYProgress, [0, 1], [0, 400]);
-  const wheelRotate = useTransform(scrollYProgress, [0, 1], [0, 1080]); // 3 full rotations 🎯
+  const wheelRotate = useTransform(scrollYProgress, [0, 1], [0, 1080]);
   const wheelOpacity = useTransform(scrollYProgress, [0.02, 0.1], [0, 1]);
   const wheelScale = useTransform(scrollYProgress, [0.01, 0.04], [0.7, 1.2]);
+  const stats = [
+    { number: "+2", label: "Years of Experience" },
+    { number: "+5", label: "Projects Completed" },
+    { number: "+10", label: "Technologies Mastered" },
+  ];
 
   // Mouse tracking for blob
   useEffect(() => {
@@ -80,7 +85,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Wheel - keep original center position */}
+      {/* Wheel */}
       <motion.div
         style={{
           y: wheelY,
@@ -121,7 +126,7 @@ export default function Hero() {
         style={{ opacity: contentOpacity, y: contentY }}
         className="relative z-20 flex flex-col lg:flex-row items-center justify-center max-w-7xl mx-auto p-8 cursor-none"
       >
-        {/* Left Side - Text */}
+        {/* Left Side */}
         <div className="flex flex-col gap-6 max-w-xl text-center lg:text-left">
           <div className="min-h-[120px]">
             <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
@@ -167,6 +172,45 @@ export default function Hero() {
               <span className="button-effect-content">Contact Me</span>
             </a>
           </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 1, ease: "easeOut" },
+              },
+            }}
+            className="flex flex-wrap justify-center lg:justify-start gap-12 mt-2"
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.3 }}
+                variants={{
+                  hidden: { scale: 0.8 },
+                  visible: {
+                    scale: 1,
+                    transition: { duration: 0.6, delay: index * 0.2 },
+                  },
+                }}
+                className="text-center"
+              >
+                <h3 className="text-5xl font-extrabold bg-gradient-to-r from-purple-700 via-purple-500 to-indigo-800 bg-clip-text text-transparent">
+                  {stat.number}
+                </h3>
+                <p className="text-gray-400 text-sm mt-2 uppercase tracking-wide">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Right Side - Image */}

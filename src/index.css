@@ -31,7 +31,14 @@
 }
 
 .aurora-background {
-  background: linear-gradient(45deg, #fbd3e9, #c1e4fa, #d5c6f7, #f0c5d8, #d6e0f5); /* Lighter, pastel colors */
+  background: linear-gradient(
+    45deg,
+    #fbd3e9,
+    #c1e4fa,
+    #d5c6f7,
+    #f0c5d8,
+    #d6e0f5
+  ); /* Lighter, pastel colors */
   background-size: 400% 400%;
   animation: auroraAnimation 60s linear infinite; /* Slower animation for smooth transition */
   position: absolute;
@@ -194,4 +201,3 @@
     padding-bottom: 2rem;
   }
 }
-

@@ -7,6 +7,7 @@ import Education from "./components/Education";
 import Publication from "./components/Publications";
 import Hackathon from "./components/Hackathon";
 import Volunteer from "./components/Volunteers";
+import Footer from "./components/Footer";
 
 // index.js
 import "./index.css";
@@ -25,6 +26,7 @@ function App() {
       <Publication />
       <Hackathon />
       <Volunteer />
+      <Footer/>
     </div>
   );
 }
