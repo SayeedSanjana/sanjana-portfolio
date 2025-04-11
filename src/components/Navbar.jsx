@@ -130,7 +130,13 @@ export default function Navbar() {
       {/* Drawer Menu (Glass effect, partial width, full height) */}
       <AnimatePresence>
         {isOpen && (
-          
+          <motion.div
+            className="fixed top-0 right-0 h-screen w-3/4 md:w-1/3 bg-white bg-opacity-60 backdrop-blur-2xl shadow-2xl rounded-l-3xl flex flex-col items-center justify-center gap-10 p-8 z-50"
+            variants={menuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
             {/* Cross button */}
             <motion.button
               className="absolute top-6 right-6 text-purple-600 text-5xl md:text-4xl focus:outline-none"
