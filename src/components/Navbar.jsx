@@ -57,7 +57,7 @@ export default function Navbar() {
         {/* Social Media Icons and Hamburger Menu */}
         <div className="flex gap-4 items-center">
           {/* Social Media Icons */}
-          <div className="hidden lg:flex gap-4">
+          <div className="flex gap-4">
             <a
               href="https://github.com/SayeedSanjana"
               target="_blank"
@@ -130,13 +130,7 @@ export default function Navbar() {
       {/* Drawer Menu (Glass effect, partial width, full height) */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            className="fixed top-0 right-0 h-screen w-3/4 md:w-1/3 bg-white bg-opacity-60 backdrop-blur-2xl shadow-2xl rounded-l-3xl flex flex-col items-center justify-center gap-10 p-8 z-50"
-            variants={menuVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
+          
             {/* Cross button */}
             <motion.button
               className="absolute top-6 right-6 text-purple-600 text-5xl md:text-4xl focus:outline-none"
@@ -160,7 +154,7 @@ export default function Navbar() {
               <motion.a
                 key={text}
                 href={`#${text.toLowerCase()}`}
-                className="text-purple-700 text-3xl md:text-2xl font-semibold hover:text-purple-800 transition-all duration-300"
+                className="text-purple-700 text-xl text-center md:text-2xl font-semibold hover:text-purple-800 transition-all duration-300"
                 variants={linkVariants}
                 initial="hidden"
                 animate="visible"
