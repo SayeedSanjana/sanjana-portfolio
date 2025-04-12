@@ -28,17 +28,15 @@ export default function Navbar() {
       x: 0,
       y: 0,
       transition: {
-        delay: i * 0.3,       // Slower and smoother
-        duration: 0.8,        // Long smooth floaty
-        type: "spring",       // Soft spring effect
-        stiffness: 50,        // Soft bounce
-        damping: 12,          // Slow stop
+        delay: i * 0.3, // Slower and smoother
+        duration: 0.8, // Long smooth floaty
+        type: "spring", // Soft spring effect
+        stiffness: 50, // Soft bounce
+        damping: 12, // Slow stop
       },
     }),
     exit: { opacity: 0, x: 100, transition: { duration: 0.4 } }, // Exit smoothly
   };
-  
-  
 
   const socialVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -89,7 +87,7 @@ export default function Navbar() {
               <FaLinkedin />
             </a>
             <a
-              href="https://instagram.com/"
+              href="https://www.instagram.com/sanjanasayeed/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-3xl text-purple-800 hover:text-pink-500 transition-all"
@@ -97,7 +95,7 @@ export default function Navbar() {
               <FaInstagram />
             </a>
             <a
-              href="https://facebook.com/"
+              href="https://www.facebook.com/sanjana.sayeed.98"
               target="_blank"
               rel="noopener noreferrer"
               className="text-3xl text-purple-800 hover:text-blue-600 transition-all"

@@ -48,7 +48,8 @@ export default function Footer() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg text-purple-200"
             >
-              Find me on any platform. I will get back to you as soon as possible!
+              Find me on any platform. I will get back to you as soon as
+              possible!
             </motion.h5>
 
             {/* Social Icons */}
@@ -70,7 +71,7 @@ export default function Footer() {
                 <i className="fab fa-github text-xl"></i>
               </a>
               <a
-                href="https://facebook.com/"
+                href="https://www.facebook.com/sanjana.sayeed.98"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-purple-50 text-blue-800 p-3 rounded-full shadow-lg hover:bg-purple-100 transition duration-300"
@@ -78,7 +79,7 @@ export default function Footer() {
                 <i className="fab fa-facebook-f text-xl"></i>
               </a>
               <a
-                href="https://instagram.com/"
+                href="https://www.instagram.com/sanjanasayeed/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-purple-50 text-pink-500 p-3 rounded-full shadow-lg hover:bg-purple-100 transition duration-300"
@@ -97,17 +98,26 @@ export default function Footer() {
               </h6>
               <ul className="space-y-2">
                 <li>
-                  <a href="#about" className="text-purple-200 hover:text-white transition">
+                  <a
+                    href="#about"
+                    className="text-purple-200 hover:text-white transition"
+                  >
                     About Me
                   </a>
                 </li>
                 <li>
-                  <a href="#projects" className="text-purple-200 hover:text-white transition">
+                  <a
+                    href="#projects"
+                    className="text-purple-200 hover:text-white transition"
+                  >
                     Projects
                   </a>
                 </li>
                 <li>
-                  <a href="#skills" className="text-purple-200 hover:text-white transition">
+                  <a
+                    href="#skills"
+                    className="text-purple-200 hover:text-white transition"
+                  >
                     Skills
                   </a>
                 </li>
