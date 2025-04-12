@@ -166,7 +166,7 @@ const FloatingCardContent = () => (
 
     <div className="pt-6">
       <a
-        href="https://github.com/your-github-link"
+        href="https://github.com/SayeedSanjana/ShapleyAdditiveExplanationsBasedFactorAnalysis-DengueSeverityPrediction-ML"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block px-6 py-3 text-sm font-bold text-purple-700 bg-white rounded-full border-2 border-purple-500 hover:bg-purple-600 hover:text-white transition duration-300 shadow-md"
