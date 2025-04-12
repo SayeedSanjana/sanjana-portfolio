@@ -26,7 +26,10 @@ const techIcons = [
   "/prisma.svg",
   "/netcore.svg",
   "/Django.svg",
-  "php.svg",
+  "/PHP.svg",
+  "/Node.js.svg",
+  "/Java.svg",
+  "/Python.svg",
 ];
 
 const Icon = React.memo(({ src, alt }) => (
