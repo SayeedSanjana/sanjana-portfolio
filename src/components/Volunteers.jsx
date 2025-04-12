@@ -13,7 +13,7 @@ const Volunteer = () => {
     <div
       ref={sectionRef}
       className="education-section py-20 min-h-screen relative"
-      id="education"
+      id="volunteers"
     >
       {/* Background */}
       <motion.div

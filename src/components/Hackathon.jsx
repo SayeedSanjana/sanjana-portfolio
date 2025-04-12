@@ -13,7 +13,7 @@ const Hackathon = () => {
     <div
       ref={sectionRef}
       className="education-section py-20 min-h-screen relative"
-      id="education"
+      id="hackathons"
     >
       {/* Background */}
       <motion.div
@@ -24,7 +24,7 @@ const Hackathon = () => {
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
           y: parallaxEffect,
-          opacity: 0.5, // 👈 reduce opacity for background image
+          opacity: 0.5, // reduce opacity for background image
         }}
       >
         <div className="absolute inset-0 bg-purple-50/30" /> {/* slight tint */}
@@ -39,7 +39,7 @@ const Hackathon = () => {
 
           {/* Timeline */}
           <div className="relative">
-            {/* --- Vertical Line --- */}
+            {/* Vertical Line */}
             <div className="absolute top-0 left-6 md:left-6 w-[2px] h-full bg-purple-300" />
 
             <div className="space-y-16 pl-8 md:pl-16">
@@ -48,14 +48,16 @@ const Hackathon = () => {
                 institution="Concordia University, Montreal, Canada"
                 date="February 2025"
                 description="At ConUHacks, one of the largest collegiate hackathons in Canada held at Concordia University in Montreal, I had the opportunity to participate in SAP’s Wildfire Response Prediction Challenge — a company-sponsored competition aimed at leveraging AI for disaster management. Our team strategically selected this real-world challenge and built a real-time predictive model to anticipate wildfire spread and optimize emergency response strategies. Throughout the intense 24-hour event, I not only deepened my technical expertise in machine learning and real-time data analytics but also strengthened my adaptability and critical thinking skills under pressure. Above all, the experience reinforced the importance of effective collaboration, teamwork, and agile problem-solving in high-stakes, fast-paced environments."
-                githubLink="https://github.com/your-github-link"
+                githubLink1="https://github.com/SayeedSanjana/conuhacks_sap_challenge"
+                githubLink2="https://github.com/SayeedSanjana/conuhacks_sap_challenge_clientside"
               />
               <TimelineItem
                 title="JACHacks"
                 institution="John Abbott College, Montreal, Canada"
                 date="April 2025"
-                description=""
-                githubLink="https://github.com/your-github-link"
+                description="Participated in an interdisciplinary hackathon focusing on social impact solutions using IoT and AI technologies. Our project centered around building an affordable smart sensor system for environmental monitoring in urban communities."
+                githubLink1="https://github.com/your-github-link"
+                githubLink2="https://github.com/your-github-link"
               />
             </div>
           </div>
@@ -70,7 +72,8 @@ const TimelineItem = ({
   institution,
   date,
   description,
-  githubLink,
+  githubLink1,
+  githubLink2,
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-100px" });
@@ -102,15 +105,30 @@ const TimelineItem = ({
           <p className="text-base text-gray-600 mb-4">{description}</p>
         )}
 
-        {githubLink && (
-          <a
-            href={githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-block px-4 py-2 text-sm font-semibold text-purple-600 bg-white rounded-full border hover:bg-purple-600 hover:text-white border-purple-400 transition duration-300 shadow-md"
-          >
-            Visit GitHub
-          </a>
+        {/* GitHub Buttons Side-by-Side */}
+        {(githubLink1 || githubLink2) && (
+          <div className="flex flex-wrap gap-4 mt-4">
+            {githubLink1 && (
+              <a
+                href={githubLink1}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-sm font-semibold text-purple-600 bg-white rounded-full border hover:bg-purple-600 hover:text-white border-purple-400 transition duration-300 shadow-md"
+              >
+                Visit GitHub (Server)
+              </a>
+            )}
+            {githubLink2 && (
+              <a
+                href={githubLink2}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-sm font-semibold text-purple-600 bg-white rounded-full border hover:bg-purple-600 hover:text-white border-purple-400 transition duration-300 shadow-md"
+              >
+                Visit GitHub (Client)
+              </a>
+            )}
+          </div>
         )}
       </div>
     </motion.div>

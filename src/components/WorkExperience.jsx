@@ -38,6 +38,7 @@ export default function WorkExperienceTimelineCards() {
 
   return (
     <section
+      id="work-experience"
       className="relative w-full min-h-screen flex flex-col items-center py-20 px-6 overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: "url('/bg-img.png')",

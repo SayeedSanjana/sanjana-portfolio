@@ -52,7 +52,10 @@ export default function Hero() {
   ];
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden pt-24 bg-white">
+    <div
+      id="home"
+      className="relative w-full min-h-screen overflow-hidden pt-24 bg-white"
+    >
       {/* Email Sidebar */}
       <div className="hidden md:flex flex-col items-center fixed left-8 top-32 z-30">
         <div className="text-gray-600 text-sm tracking-widest rotate-90 origin-bottom-left">
@@ -185,23 +188,23 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-6">
-  {/* View Resume */}
-  <a
-    href="/SanjanaSayeed--Resume.pdf"
-    target="_blank"
-    className="btn-wave group relative inline-flex items-center justify-center px-6 py-3 rounded-full text-purple-700 border-2 border-purple-700 bg-white font-semibold tracking-wide overflow-hidden cursor-pointer"
-  >
-    <span className="relative z-10">View Resume</span>
-  </a>
+            {/* View Resume */}
+            <a
+              href="/SanjanaSayeed--Resume.pdf"
+              target="_blank"
+              className="btn-wave group relative inline-flex items-center justify-center px-6 py-3 rounded-full text-purple-700 border-2 border-purple-700 bg-white font-semibold tracking-wide overflow-hidden cursor-pointer"
+            >
+              <span className="relative z-10">View Resume</span>
+            </a>
 
-  {/* Contact Me */}
-  <a
-    href="mailto:sanjanasayeed68@gmail.com"
-    className="btn-wave group relative inline-flex items-center justify-center px-6 py-3 rounded-full text-purple-700 border-2 border-purple-700 bg-white font-semibold tracking-wide overflow-hidden cursor-pointer"
-  >
-    <span className="relative z-10">Contact Me</span>
-  </a>
-</div>
+            {/* Contact Me */}
+            <a
+              href="mailto:sanjanasayeed68@gmail.com"
+              className="btn-wave group relative inline-flex items-center justify-center px-6 py-3 rounded-full text-purple-700 border-2 border-purple-700 bg-white font-semibold tracking-wide overflow-hidden cursor-pointer"
+            >
+              <span className="relative z-10">Contact Me</span>
+            </a>
+          </div>
 
           {/* Stats */}
           <motion.div

@@ -52,9 +52,11 @@ export default function SkillsSection() {
     const interval = setInterval(() => {
       setRowOffsets((prev) =>
         prev.map((offset, index) => {
-          if (index === 0) return offset === -50 ? 0 : offset - 50;
-          if (index === 1) return offset === 50 ? 0 : offset + 50;
-          return offset === -50 ? 0 : offset - 50;
+          if (index === 0) return offset === -50 ? 0 : offset - 50; // Row 1: Left
+          if (index === 1) return offset === 50 ? 0 : offset + 50; // Row 2: Right
+          if (index === 2) return offset === -50 ? 0 : offset - 50; // Row 3: Left
+          if (index === 3) return offset === 50 ? 0 : offset + 50; // Row 4: Right (opposite to Row 3)
+          return offset;
         })
       );
     }, 3000);
@@ -65,7 +67,10 @@ export default function SkillsSection() {
   return (
     <AuroraBackground className="relative z-0 py-10">
       <div className="w-full max-w-screen-lg overflow-hidden z-10 px-4 md:px-8">
-        <div className="relative w-full py-20 md:py-32 flex flex-col items-center justify-center rounded-xl  z-10">
+        <div
+          id="skills-and-expertise"
+          className="relative w-full py-20 md:py-32 flex flex-col items-center justify-center rounded-xl  z-10"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-purple-800 text-center mb-10">
             Skills and Expertise
           </h2>
@@ -88,7 +93,7 @@ export default function SkillsSection() {
             transition={{ type: "tween", duration: 2 }}
           >
             {techIcons.slice(8, 16).map((icon, index) => (
-              <Icon key={index} src={icon} alt={`Tech Icon ${index + 8}`} />
+              <Icon key={index + 8} src={icon} alt={`Tech Icon ${index + 8}`} />
             ))}
           </motion.div>
 
@@ -98,8 +103,28 @@ export default function SkillsSection() {
             animate={{ x: rowOffsets[2] }}
             transition={{ type: "tween", duration: 2 }}
           >
-            {techIcons.slice(16).map((icon, index) => (
-              <Icon key={index} src={icon} alt={`Tech Icon ${index + 16}`} />
+            {techIcons.slice(16, 24).map((icon, index) => (
+              <Icon
+                key={index + 16}
+                src={icon}
+                alt={`Tech Icon ${index + 16}`}
+              />
+            ))}
+          </motion.div>
+
+          {/* Row 4 */}
+          {/* Row 4 */}
+          <motion.div
+            className="flex flex-wrap gap-6 justify-center mt-8"
+            animate={{ x: rowOffsets[0] }} // <--- now it moves like Row 1
+            transition={{ type: "tween", duration: 2 }}
+          >
+            {techIcons.slice(24).map((icon, index) => (
+              <Icon
+                key={index + 24}
+                src={icon}
+                alt={`Tech Icon ${index + 24}`}
+              />
             ))}
           </motion.div>
         </div>

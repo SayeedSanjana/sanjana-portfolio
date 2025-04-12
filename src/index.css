@@ -231,26 +231,35 @@
   z-index: 0;
   pointer-events: none;
   opacity: 0;
-  transition: transform 0s cubic-bezier(0.2, 0, 0.1, 1) 0.5s, opacity 0.5s cubic-bezier(0.2, 0, 0.1, 1);
+  transition: transform 0s cubic-bezier(0.2, 0, 0.1, 1) 0.5s,
+    opacity 0.5s cubic-bezier(0.2, 0, 0.1, 1);
 }
 
 /* Light Purple Wave */
 .btn-wave::before {
   transform: translate3d(-10%, 4.8em, 0) rotate(330deg);
-  background: linear-gradient(25deg, rgba(168, 85, 247, 0.6), rgba(168, 85, 247, 0));
+  background: linear-gradient(
+    25deg,
+    rgba(168, 85, 247, 0.6),
+    rgba(168, 85, 247, 0)
+  );
 }
 
 /* Darker Purple Wave */
 .btn-wave::after {
   transform: translate3d(10%, 5.2em, 0) rotate(0deg);
-  background: linear-gradient(70deg, rgba(109, 40, 217, 0.7), rgba(109, 40, 217, 0));
+  background: linear-gradient(
+    70deg,
+    rgba(109, 40, 217, 0.7),
+    rgba(109, 40, 217, 0)
+  );
 }
 
 /* On Hover */
 .btn-wave:hover,
 .btn-wave:focus {
   background-color: white; /* still white */
-  color: #7c3aed; /* text stays purple */
+  color: #7630ff; /* text stays purple */
   box-shadow: inset 0 0 0 0.1em #7c3aed, 0 0 1.75em rgba(139, 92, 246, 0.4);
 }
 

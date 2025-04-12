@@ -107,7 +107,9 @@ const TimelineItem = ({ title, institution, date, courses }) => {
 
       {/* Content */}
       <div className="flex-1 text-left">
-        <h3 className="text-xl md:text-2xl font-bold text-purple-600">{title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-purple-600">
+          {title}
+        </h3>
         <p className="text-lg text-gray-700">{institution}</p>
         <p className="text-sm text-gray-600 mb-4">{date}</p>
 

@@ -612,6 +612,7 @@ const Project = () => {
 
   return (
     <div
+    id="projects"
       className="w-full bg-cover bg-center bg-no-repeat font-sans md:px-10 relative " // 👈 ADD overflow-visible here
       style={{
         backgroundImage: 'url("/bg-img.png")',

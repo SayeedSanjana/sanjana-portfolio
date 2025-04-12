@@ -22,20 +22,20 @@ export default function Navbar() {
   };
 
   const linkVariants = {
-    hidden: { opacity: 0, x: 100, y: 20 }, // Start right + little down
+    hidden: { opacity: 0, x: 100, y: 20 },
     visible: (i) => ({
       opacity: 1,
       x: 0,
       y: 0,
       transition: {
-        delay: i * 0.3, // Slower and smoother
-        duration: 0.8, // Long smooth floaty
-        type: "spring", // Soft spring effect
-        stiffness: 50, // Soft bounce
-        damping: 12, // Slow stop
+        delay: i * 0.15, // Faster link stagger
+        duration: 0.7,
+        type: "spring",
+        stiffness: 50,
+        damping: 12,
       },
     }),
-    exit: { opacity: 0, x: 100, transition: { duration: 0.4 } }, // Exit smoothly
+    exit: { opacity: 0, x: 100, transition: { duration: 0.4 } },
   };
 
   const socialVariants = {
@@ -62,6 +62,18 @@ export default function Navbar() {
       setIconSpin(false);
     }, 400);
   };
+
+  const navLinks = [
+    { text: "About Me", href: "#home" },
+    { text: "Work Experience", href: "#work-experience" },
+    { text: "Skills and Expertise", href: "#skills-and-expertise" },
+    { text: "Projects", href: "#projects" },
+    { text: "Education", href: "#education" },
+    { text: "Hackathons", href: "#hackathons" },
+    { text: "Publications", href: "#publications" },
+    { text: "Volunteering and Leadership", href: "#volunteers" },
+    { text: "Github Statistics", href: "#github" },
+  ];
 
   return (
     <>
@@ -104,7 +116,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Hamburger */}
+          {/* Hamburger Icon */}
           {!isOpen && (
             <motion.div
               className="p-4"
@@ -149,7 +161,7 @@ export default function Navbar() {
             animate="visible"
             exit="exit"
           >
-            {/* Close button */}
+            {/* Close Button */}
             <motion.button
               className="absolute top-6 right-6 text-purple-600 text-5xl md:text-4xl focus:outline-none"
               onClick={handleClose}
@@ -160,20 +172,12 @@ export default function Navbar() {
             </motion.button>
 
             {/* Navigation Links */}
-            <div className="flex flex-col gap-8">
-              {[
-                "Home",
-                "Work Experience",
-                "Skills and Expertise",
-                "Projects",
-                "Education",
-                "Hackathons and Competition",
-                "Publications",
-              ].map((text, index) => (
+            <div className="flex flex-col gap-8 mt-16">
+              {navLinks.map((link, index) => (
                 <motion.a
-                  key={text}
-                  href={`#${text.toLowerCase().replace(/\s/g, "-")}`}
-                  className="text-purple-700 text-xl text-center md:text-2xl font-semibold hover:text-purple-800 transition-all duration-300"
+                  key={link.text}
+                  href={link.href}
+                  className="text-purple-700 text-xl md:text-2xl text-center font-semibold hover:text-purple-800 transition-all duration-300"
                   variants={linkVariants}
                   initial="hidden"
                   animate="visible"
@@ -181,12 +185,12 @@ export default function Navbar() {
                   custom={index}
                   onClick={handleClose}
                 >
-                  {text}
+                  {link.text}
                 </motion.a>
               ))}
             </div>
 
-            {/* Social Icons inside drawer (only visible here for mobile) */}
+            {/* Social Icons inside Drawer for Mobile */}
             <motion.div
               className="flex justify-center gap-6 pt-8 sm:hidden"
               variants={socialVariants}
@@ -211,7 +215,7 @@ export default function Navbar() {
                 <FaLinkedin />
               </a>
               <a
-                href="https://instagram.com/"
+                href="https://www.instagram.com/sanjanasayeed/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-purple-700 hover:text-pink-500 transition-all"
@@ -219,7 +223,7 @@ export default function Navbar() {
                 <FaInstagram />
               </a>
               <a
-                href="https://facebook.com/"
+                href="https://www.facebook.com/sanjana.sayeed.98"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-purple-700 hover:text-blue-600 transition-all"

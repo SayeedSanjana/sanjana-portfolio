@@ -45,7 +45,7 @@ const Publication = () => {
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-8 flex flex-col justify-center min-h-[80vh]">
         <h2 className="text-3xl md:text-4xl font-bold text-purple-300 text-center mb-24">
-          Publication
+          Publications
         </h2>
 
         {publications.map((publication, index) => (
@@ -176,6 +176,5 @@ const FloatingCardContent = () => (
     </div>
   </div>
 );
-
 
 export default Publication;

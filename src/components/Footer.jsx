@@ -99,7 +99,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="#about"
+                    href="#home"
                     className="text-purple-200 hover:text-white transition"
                   >
                     About Me
@@ -115,7 +115,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#skills"
+                    href="#skills-and-expertise"
                     className="text-purple-200 hover:text-white transition"
                   >
                     Skills
