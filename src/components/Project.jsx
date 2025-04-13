@@ -8,23 +8,32 @@ const data = [
     content: (
       <div className="container mx-auto px-2 py-2">
         <div className="mb-4 text-center">
-          <div className="flex  gap-4">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-start items-center gap-4">
             {/* Visit the project button */}
             <a
               href="https://www.banglaglocal.org/"
-              className="px-2 py-2 text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
             >
               Visit the Project
             </a>
-
-            {/* View on Github button */}
+            {/* View on GitHub (Client) */}
             <a
-              href="https://github.com/SayeedSanjana/bangla_magazine_frontend" // Replace with your actual GitHub repo link
+              href="https://github.com/SayeedSanjana/bangla_magazine_frontend"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-2 py-2 text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
             >
-              View on GitHub
+              View on GitHub (Client)
+            </a>
+
+            {/* View on GitHub (Server) */}
+            <a
+              href="https://github.com/SayeedSanjana/bangla_drive_sheets_api"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
+            >
+              View on GitHub (Server)
             </a>
           </div>
         </div>
@@ -100,23 +109,32 @@ const data = [
     content: (
       <div className="container mx-auto px-2 py-2">
         <div className="mb-4 text-center">
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-start items-center gap-4">
             {/* Visit the project button */}
-            <a
-              href="https://your-project-link.com" // Replace with your actual project link
-              className="px-2 py-2 text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md"
+            {/* <a
+              href="https://www.banglaglocal.org/"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
             >
               Visit the Project
-            </a>
-
-            {/* View on Github button */}
+            </a> */}
+            {/* View on GitHub (Client) */}
             <a
-              href="https://github.com/your-github-repo" // Replace with your actual GitHub repo link
+              href="https://github.com/SayeedSanjana/Roamly-Frontend"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-2 py-2 text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
             >
-              View on GitHub
+              View on GitHub (Client)
+            </a>
+
+            {/* View on GitHub (Server) */}
+            <a
+              href="https://github.com/SayeedSanjana/Roamly"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
+            >
+              View on GitHub (Server)
             </a>
           </div>
         </div>
@@ -208,23 +226,32 @@ const data = [
     content: (
       <div className="container mx-auto px-2 py-2">
         <div className="mb-4 text-center">
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-start items-center gap-4">
             {/* Visit the project button */}
-            <a
-              href="https://your-project-link.com" // Replace with your actual project link
-              className="px-2 py-2 text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md"
+            {/* <a
+              href="https://www.banglaglocal.org/"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
             >
               Visit the Project
-            </a>
+            </a> */}
 
-            {/* View on Github button */}
+            {/* View on GitHub (Server) */}
+            {/* View on GitHub (Client) */}
             <a
-              href="https://github.com/your-github-repo" // Replace with your actual GitHub repo link
+              href="https://github.com/SayeedSanjana/Recommender_System_Frontend"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-2 py-2 text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
             >
-              View on GitHub
+              View on GitHub (Client)
+            </a>
+            <a
+              href="https://github.com/SayeedSanjana/feasthub-recommender-api"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
+            >
+              View on GitHub (Server)
             </a>
           </div>
         </div>
@@ -261,7 +288,7 @@ const data = [
               PostgreSQL
             </span>
             <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
-              React
+              Vue.js
             </span>
             <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
               Tailwind CSS
@@ -304,18 +331,18 @@ const data = [
     content: (
       <div className="container mx-auto px-2 py-2">
         <div className="mb-4 text-center">
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-start items-center gap-4">
             {/* Visit the project button */}
-            <a
+            {/* <a
               href="https://your-project-link.com" // Replace with your actual project link
               className="px-2 py-2 text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md"
             >
               Visit the Project
-            </a>
+            </a> */}
 
             {/* View on Github button */}
             <a
-              href="https://github.com/your-github-repo" // Replace with your actual GitHub repo link
+              href="https://github.com/SayeedSanjana/COMP6231_Fault_Tolerant_System_DMTBS" // Replace with your actual GitHub repo link
               target="_blank"
               rel="noopener noreferrer"
               className="px-2 py-2 text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md"
@@ -395,23 +422,23 @@ const data = [
     content: (
       <div className="container mx-auto px-2 py-2">
         <div className="mb-4 text-center">
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-start items-center gap-4">
             {/* Visit the project button */}
             <a
-              href="https://www.exampleprojectlink.com"
+              href="https://github.com/SayeedSanjana/denis-vue-js"
               className="px-4 py-2 text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md"
             >
-              Visit the Project
+              View on GitHub (Client)
             </a>
 
             {/* View on Github button */}
             <a
-              href="https://github.com/your-repository-link"
+              href="https://github.com/SayeedSanjana/dental-service-api-js"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md"
             >
-              View on GitHub
+              View on GitHub (Server)
             </a>
           </div>
         </div>
@@ -497,18 +524,18 @@ const data = [
     content: (
       <div className="container mx-auto px-2 py-2">
         <div className="mb-4 text-center">
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-start items-center gap-4">
             {/* Visit the project button */}
-            <a
+            {/* <a
               href="https://www.trendify.com"
               className="px-4 py-2 text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md"
             >
               Visit the Project
-            </a>
+            </a> */}
 
             {/* View on Github button */}
             <a
-              href="https://github.com/your-repository-link"
+              href="https://github.com/SayeedSanjana/Trendify-E-Commerce-Site"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md"
@@ -612,7 +639,7 @@ const Project = () => {
 
   return (
     <div
-    id="projects"
+      id="projects"
       className="w-full bg-cover bg-center bg-no-repeat font-sans md:px-10 relative " // 👈 ADD overflow-visible here
       style={{
         backgroundImage: 'url("/bg-img.png")',
@@ -635,7 +662,7 @@ const Project = () => {
       <div ref={ref} className="relative max-w-7xl mx-auto pb-60 md:pb-80 ">
         {data.map((item, index) => (
           <div key={index} className="flex justify-start pt-5 md:gap-10 pb-10">
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+            <div className="sticky flex flex-col md:flex-row z-40 items-center top-32 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-purple-600 flex items-center justify-center">
                 <div className="h-4 w-4 rounded-full bg-purple-400 border-neutral-300 p-2" />
               </div>
@@ -644,7 +671,7 @@ const Project = () => {
               </h3>
             </div>
 
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
+            <div className="relative pl-16 pr-4 md:pl-4 w-full">
               <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500">
                 {item.title}
               </h3>
@@ -657,7 +684,7 @@ const Project = () => {
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-neutral-200 to-transparent mask-image-linear"
         >
           <motion.div
             style={{
