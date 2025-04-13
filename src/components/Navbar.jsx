@@ -72,7 +72,7 @@ export default function Navbar() {
     { text: "Hackathons", href: "#hackathons" },
     { text: "Publications", href: "#publications" },
     { text: "Volunteering and Leadership", href: "#volunteers" },
-    { text: "Github Statistics", href: "#github" },
+    { text: "Github Journey", href: "#github" },
   ];
 
   return (
