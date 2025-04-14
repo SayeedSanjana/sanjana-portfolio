@@ -138,7 +138,7 @@ const TimelineItem = ({
                 rel="noopener noreferrer"
                 className="px-4 py-2 text-sm font-semibold text-purple-600 bg-white rounded-full border hover:bg-purple-600 hover:text-white border-purple-400 transition duration-300 shadow-md"
               >
-                Visit Project
+                Visit the Project
               </a>
             )}
           </div>
