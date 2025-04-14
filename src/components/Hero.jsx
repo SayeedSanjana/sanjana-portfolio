@@ -86,7 +86,7 @@ export default function Hero() {
 
       {/* Blob following mouse */}
       <motion.div
-        className="fixed top-0 left-0 w-64 h-64 bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 rounded-full mix-blend-multiply blur-3xl pointer-events-none z-10"
+        className="fixed top-0 left-0 w-52 h-52 bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-300 rounded-full mix-blend-multiply blur-3xl pointer-events-none z-10"
         animate={{
           x: mouse.x - 150,
           y: mouse.y - 150,
@@ -132,7 +132,7 @@ export default function Hero() {
       {/* Custom Cursor */}
       <motion.div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-6 h-6 rounded-full bg-purple-500 opacity-90 pointer-events-none blur-sm"
+        className="fixed top-0 left-0 w-6 h-6 rounded-full bg-purple-300 opacity-90 pointer-events-none blur-sm"
         animate={{
           x: mouse.x - 12,
           y: mouse.y - 12,
@@ -174,16 +174,24 @@ export default function Hero() {
               </span>
             </h1>
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold text-gray-700">
-            Software Engineer | Fullstack Developer
+          <h2 className="text-xl  font-semibold text-gray-700">
+            Software Engineer | Fullstack Developer | AI Enthusiast | Technical
+            Problem Solver | DevOps Enthusiast
           </h2>
           <p className="text-gray-600">
-            I'm a passionate Software Engineer with a strong foundation in
-            fullstack development and artificial intelligence, specializing in
-            Java, Node.js, React, Next.js, Typescript, Vue.js, Python, and
-            scalable cloud solutions. I design and build intelligent,
-            user-centric applications that bridge technology and innovation.
-            Let’s create something incredible together!
+            As a Software Engineer and Fullstack Developer, I’m passionate about
+            transforming ideas into smart, high-performing applications. I
+            specialize in fullstack development and AI integrations using Java,
+            Node.js, React, Next.js, TypeScript, Vue.js, Python, and cloud
+            technologies.
+          </p>
+          <p className="text-gray-600 mt-1">
+            Whether it’s crafting intuitive user interfaces, architecting
+            scalable backend systems, or optimizing performance, I aim to
+            deliver thoughtful solutions that make a real difference. I thrive
+            in collaborative, agile environments and believe that continuous
+            learning and innovation are at the heart of great software. Let's
+            build something extraordinary together!
           </p>
 
           {/* Buttons */}

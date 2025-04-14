@@ -613,6 +613,113 @@ const data = [
       </div>
     ),
   },
+  {
+    title: "Personal Portfolio Site",
+    content: (
+      <div className="container mx-auto px-2 py-2">
+        <div className="mb-4 text-center">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-start items-center gap-4">
+            {/* Visit the project button */}
+            <a
+              href="https://sanjanasayeed-portfolio.vercel.app/"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-white border-2 border-purple-600 bg-purple-600 hover:bg-purple-800 transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
+            >
+              Visit the Project
+            </a>
+            {/* View on GitHub (Client) */}
+            <a
+              href="https://github.com/SayeedSanjana/sanjana-portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
+            >
+              View on GitHub
+            </a>
+
+            {/* View on GitHub (Server) */}
+            {/* <a
+              href="https://github.com/SayeedSanjana/bangla_drive_sheets_api"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-sm md:text-base font-semibold text-purple-600 border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 rounded-full shadow-md w-full md:w-auto text-center"
+            >
+              View on GitHub (Server)
+            </a> */}
+          </div>
+        </div>
+
+        <p className="text-neutral-800 text-base font-normal mb-8">
+          I designed and developed a fully responsive personal portfolio website
+          to showcase my projects, skills, and professional background. The site
+          features smooth animations, interactive elements, and a clean, modern
+          user interface optimized for both desktop and mobile devices. It
+          highlights my expertise through an engaging and intuitive experience,
+          while ensuring fast load times and high performance. The project also
+          focuses on accessibility and responsive design best practices.
+        </p>
+
+        {/* Languages and Technologies Section */}
+        <div className="text-center mb-8">
+          <div className="flex justify-start gap-4 flex-wrap">
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              React.js
+            </span>
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              Tailwind CSS
+            </span>
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              Framer Motion
+            </span>
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              React Simple Typewriter
+            </span>
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              HTML5
+            </span>
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              CSS3
+            </span>
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              JavaScript (ES6+)
+            </span>
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              JavaScript (ES6+)
+            </span>
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              React Hooks
+            </span>
+            <span className="bg-purple-100 text-purple-600 px-4 py-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-sm font-semibold shadow-md">
+              Vercel
+            </span>
+          </div>
+        </div>
+
+        {/* Images Section */}
+        <div className="grid grid-cols-2 gap-4">
+          <img
+            src="/image24.png"
+            alt="hero template"
+            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
+          />
+          <img
+            src="/image25.png"
+            alt="feature template"
+            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
+          />
+          <img
+            src="/image26.png"
+            alt="bento template"
+            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
+          />
+          <img
+            src="/image27.png"
+            alt="cards template"
+            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
+          />
+        </div>
+      </div>
+    ),
+  },
 ];
 
 const Project = () => {
