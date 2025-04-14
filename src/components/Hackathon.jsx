@@ -50,6 +50,7 @@ const Hackathon = () => {
                 description="At ConUHacks, one of the largest collegiate hackathons in Canada held at Concordia University in Montreal, I had the opportunity to participate in SAP’s Wildfire Response Prediction Challenge — a company-sponsored competition aimed at leveraging AI for disaster management. Our team strategically selected this real-world challenge and built a real-time predictive model to anticipate wildfire spread and optimize emergency response strategies. Throughout the intense 24-hour event, I not only deepened my technical expertise in machine learning and real-time data analytics but also strengthened my adaptability and critical thinking skills under pressure. Above all, the experience reinforced the importance of effective collaboration, teamwork, and agile problem-solving in high-stakes, fast-paced environments."
                 githubLink1="https://github.com/SayeedSanjana/conuhacks_sap_challenge"
                 githubLink2="https://github.com/SayeedSanjana/conuhacks_sap_challenge_clientside"
+                githubLink3="https://devpost.com/software/conuhacks_sap_challenge"
               />
               <TimelineItem
                 title="JACHacks"
@@ -58,6 +59,7 @@ const Hackathon = () => {
                 description="Participated in an interdisciplinary hackathon focusing on social impact solutions using IoT and AI technologies. Our project centered around building an affordable smart sensor system for environmental monitoring in urban communities."
                 githubLink1="https://github.com/your-github-link"
                 githubLink2="https://github.com/your-github-link"
+                githubLink3="https://github.com/your-github-link"
               />
             </div>
           </div>
@@ -74,6 +76,7 @@ const TimelineItem = ({
   description,
   githubLink1,
   githubLink2,
+  githubLink3,
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-100px" });
@@ -95,7 +98,7 @@ const TimelineItem = ({
       <div className="w-4 h-4 bg-purple-600 rounded-full mt-2"></div>
 
       {/* Content */}
-      <div className="flex-1 text-left">
+      <div className="flex-1 text-left ">
         <h3 className="text-xl md:text-2xl font-bold text-purple-600">
           {title}
         </h3>
@@ -106,7 +109,7 @@ const TimelineItem = ({
         )}
 
         {/* GitHub Buttons Side-by-Side */}
-        {(githubLink1 || githubLink2) && (
+        {(githubLink1 || githubLink2 || githubLink3) && (
           <div className="flex flex-wrap gap-4 mt-4">
             {githubLink1 && (
               <a
@@ -126,6 +129,16 @@ const TimelineItem = ({
                 className="px-4 py-2 text-sm font-semibold text-purple-600 bg-white rounded-full border hover:bg-purple-600 hover:text-white border-purple-400 transition duration-300 shadow-md"
               >
                 Visit GitHub (Client)
+              </a>
+            )}
+            {githubLink3 && (
+              <a
+                href={githubLink3}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-sm font-semibold text-purple-600 bg-white rounded-full border hover:bg-purple-600 hover:text-white border-purple-400 transition duration-300 shadow-md"
+              >
+                Visit Project
               </a>
             )}
           </div>
