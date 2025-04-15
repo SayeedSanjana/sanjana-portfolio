@@ -92,8 +92,8 @@ export default function GithubBentoStats() {
           className="rounded-3xl bg-white/20 backdrop-blur-md p-6 shadow-xl hover:shadow-purple-300 flex flex-col items-center"
         >
           <img
-            src="https://github-readme-streak-stats.herokuapp.com/?user=SayeedSanjana&theme=tokyonight&hide_border=true"
-            alt="GitHub Streak"
+            src="https://streak-stats.demolab.com/?user=SayeedSanjana&theme=tokyonight&hide_border=true"
+            alt="GitHub Streak Stats"
             className="rounded-lg w-full"
           />
         </motion.div>

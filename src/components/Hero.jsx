@@ -198,7 +198,7 @@ export default function Hero() {
           <div className="flex flex-wrap justify-center lg:justify-start gap-6">
             {/* View Resume */}
             <a
-              href="/SanjanaSayeed--Resume.pdf"
+              href="/SanjanaSayeed-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-wave group relative inline-flex items-center justify-center px-6 py-3 rounded-full text-purple-700 border-2 border-purple-700 bg-white font-semibold tracking-wide overflow-hidden cursor-pointer"
