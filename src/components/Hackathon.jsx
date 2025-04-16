@@ -52,7 +52,7 @@ const Hackathon = () => {
                 githubLink2="https://github.com/SayeedSanjana/conuhacks_sap_challenge_clientside"
                 githubLink3="https://devpost.com/software/conuhacks_sap_challenge"
               />
-              <TimelineItem
+              {/* <TimelineItem
                 title="JACHacks"
                 institution="John Abbott College, Montreal, Canada"
                 date="April 2025"
@@ -60,7 +60,7 @@ const Hackathon = () => {
                 githubLink1="https://github.com/your-github-link"
                 githubLink2="https://github.com/your-github-link"
                 githubLink3="https://github.com/your-github-link"
-              />
+              /> */}
             </div>
           </div>
         </div>
