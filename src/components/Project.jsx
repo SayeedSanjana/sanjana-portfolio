@@ -732,38 +732,44 @@ const data = [
 ];
 
 const Project = () => {
-  const ref = useRef(null);
-  const containerRef = useRef(null);
+  const contentRef = useRef(null);
+  const timelineRef = useRef(null);
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
-  }, [ref]);
+    const updateHeight = () => {
+      if (contentRef.current) {
+        setHeight(contentRef.current.scrollHeight);
+      }
+    };
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
 
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: timelineRef,
     offset: ["start 10%", "end 50%"],
   });
 
   const wheelY = useTransform(scrollYProgress, [0, 1], [0, 400]);
+  //const wheelY = useTransform(scrollYProgress, [0, 1], [0, 400]);
   const wheelRotate = useTransform(scrollYProgress, [0, 1], [0, 720]);
-  const wheelOpacity = useTransform(scrollYProgress, [0.01, 0.04], [1, 0.6]); // Reduced fade out, opacity will go from 1 to 0.6
+  const wheelOpacity = useTransform(scrollYProgress, [0.01, 0.04], [1, 0.6]);
   const wheelScale = useTransform(scrollYProgress, [0.01, 0.04], [0.7, 1.2]);
 
   return (
     <div
       id="projects"
-      className="w-full bg-cover bg-center bg-no-repeat font-sans md:px-10 relative " // 👈 ADD overflow-visible here
+      className="w-full bg-cover bg-center bg-no-repeat font-sans md:px-10 relative"
       style={{
         backgroundImage: 'url("/bg-img.png")',
         backgroundAttachment: "fixed",
       }}
     >
       <div className="absolute inset-0 bg-gray-400 opacity-30 z-0" />
-      <div className="relative max-w-7xl mx-auto py-20 md:py-40  px-4 md:px-8 lg:px-10 z-10">
+      <div className="relative max-w-7xl mx-auto py-20 md:py-40 px-4 md:px-8 lg:px-10 z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-purple-900 text-center mb-5">
           Projects
         </h2>
@@ -775,43 +781,50 @@ const Project = () => {
         </p>
       </div>
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-60 md:pb-80 ">
-        {data.map((item, index) => (
-          <div key={index} className="flex justify-start pt-5 md:gap-10 pb-10">
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-32 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-purple-600 flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-purple-400 border-neutral-300 p-2" />
+      <div
+        ref={timelineRef}
+        className="relative max-w-7xl mx-auto pb-60 md:pb-80"
+      >
+        <div ref={contentRef}>
+          {data.map((item, index) => (
+            <div
+              key={index}
+              className="flex justify-start pt-5 md:gap-10 pb-10"
+            >
+              <div className="sticky flex flex-col md:flex-row z-40 items-center top-32 self-start max-w-xs lg:max-w-sm md:w-full">
+                <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-purple-600 flex items-center justify-center">
+                  <div className="h-4 w-4 rounded-full bg-purple-400 border-neutral-300 p-2" />
+                </div>
+                <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl lg:text-5xl font-bold text-neutral-500">
+                  {item.title}
+                </h3>
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl lg:text-5xl font-bold text-neutral-500">
-                {item.title}
-              </h3>
-            </div>
 
-            <div className="relative pl-16 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500">
-                {item.title}
-              </h3>
-              {item.content}
+              <div className="relative pl-16 pr-4 md:pl-4 w-full">
+                <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500">
+                  {item.title}
+                </h3>
+                {item.content}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
 
+        {/* Timeline Line */}
         <div
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-neutral-200 to-transparent"
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-neutral-200 to-transparent mask-image-linear"
         >
           <motion.div
-            style={{
-              height: height,
-            }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-400 via-purple-600 to-transparent from-[0%] via-[10%] rounded-full"
+            style={{ height: height }}
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-400 via-purple-600 to-transparent rounded-full"
           />
         </div>
       </div>
 
-      {/* Rotating SVG at the end of the Project section */}
+      {/* Rotating Wheel */}
       <motion.div
         style={{
           y: wheelY,
@@ -820,19 +833,20 @@ const Project = () => {
           scale: wheelScale,
         }}
         className="absolute 
-    bottom-60 left-[18%]
-    sm:bottom-40 sm:left-[22%]
-    md:bottom-32 md:left-[30%]
-    lg:bottom-20 lg:left-1/2
+    bottom-80 left-[10%]           // mobile: high & left
+    sm:bottom-72 sm:left-[14%]
+    md:bottom-60 md:left-[26%]
+    lg:bottom-80 lg:left-1/2       // large: moved more up
+    xl:bottom-36 xl:left-1/2       // xl+: original
     -translate-x-1/2 z-0 pointer-events-none"
       >
         <div
           className="relative 
-    w-[50vw] max-w-[200px]
-    sm:w-[60vw] sm:max-w-[250px]
-    md:w-[60vw] md:max-w-[350px]
-    lg:w-[60vw] lg:max-w-[500px]
-    xl:w-[60vw] xl:max-w-[600px]"
+      w-[60vw] max-w-[300px]       // ⬅️ Bigger on base (mobile)
+      sm:max-w-[350px]             // ⬅️ Bigger on small screen
+      md:max-w-[400px]             
+      lg:max-w-[450px]
+      xl:max-w-[550px]"
         >
           <img
             src="/wheel2.svg"
