@@ -13,18 +13,15 @@ const EducationTimeline = () => {
   return (
     <div
       ref={sectionRef}
-      className="education-section py-20 min-h-screen relative"
+      className="education-section py-24 min-h-screen relative overflow-hidden"
       id="education"
     >
-      {/* Background */}
+      {/* Background with parallax */}
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: 'url("/bg-img2.png")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
           y: parallaxEffect,
+          backgroundImage: 'url("/bg-img2.png")',
         }}
       >
         <div className="absolute inset-0 bg-purple-50/20" />
@@ -32,21 +29,22 @@ const EducationTimeline = () => {
 
       {/* Main Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center w-full">
           <h2 className="text-3xl md:text-4xl font-bold text-purple-800 mb-20">
             Education
           </h2>
 
-          {/* Timeline */}
-          <div className="relative">
-            {/* --- Vertical Fixed Line --- */}
-            <div className="absolute top-0 left-6 md:left-6 w-[2px] h-full bg-purple-300" />
+          {/* Timeline Container */}
+          <div className="relative pl-10 md:pl-16">
+            {/* Vertical Line */}
+            <div className="absolute top-0 left-2 md:left-4 w-[2px] h-full bg-purple-300" />
 
-            <div className="space-y-16 pl-8 md:pl-16">
+            {/* Timeline Items */}
+            <div className="space-y-16">
               <TimelineItem
                 title="Master of Engineering in Software Engineering"
                 institution="Concordia University, Montreal, Canada"
-                date="Winter 2023 - Fall 2024"
+                date="2023 - 2024"
                 courses={[
                   "Distributed System Design",
                   "Total Quality Methodologies in Engineering",
@@ -63,7 +61,7 @@ const EducationTimeline = () => {
               <TimelineItem
                 title="Bachelor of Science in Computer Science and Engineering"
                 institution="Brac University, Dhaka, Bangladesh"
-                date="Spring 2017 - Fall 2020"
+                date="2017 - 2020"
                 courses={[
                   "Data Structures",
                   "Algorithms",
@@ -99,11 +97,26 @@ const TimelineItem = ({ title, institution, date, courses }) => {
         hidden: { opacity: 0, x: -100 },
         show: { opacity: 1, x: 0 },
       }}
-      transition={{ duration: 1.5, ease: "easeOut" }}
-      className="flex items-start space-x-4"
+      transition={{ duration: 1.2, ease: "easeOut" }}
+      className="relative flex items-start gap-4"
     >
-      {/* Bullet */}
-      <div className="w-4 h-4 bg-purple-600 rounded-full mt-2" />
+      {/* Year Indicator with Dot */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="absolute -left-28 md:-left-36 top-0"
+      >
+        <div className="flex flex-col items-center space-y-1">
+          <div className="text-sm md:text-base text-purple-700 font-bold bg-purple-100 border border-purple-300 rounded-full px-3 py-1 shadow-md">
+            {date}
+          </div>
+          {/* <div className="w-2 h-2 bg-purple-700 rounded-full" /> */}
+        </div>
+      </motion.div>
+
+      {/* Timeline Bullet */}
+      <div className=" mt-2" />
 
       {/* Content */}
       <div className="flex-1 text-left">
