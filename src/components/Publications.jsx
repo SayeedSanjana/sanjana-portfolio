@@ -94,10 +94,8 @@ const FeaturedPublicationCard = ({ title, description, tech }) => {
         <p className="text-sm text-purple-400">{tech}</p>
       </motion.div>
 
-      {/* Right Floating Card */}
-      {/* Different placement depending on screen size */}
+      {/* Right Floating Card - XL and up */}
       <div className="hidden xl:block absolute right-[-100px] top-1/2 transform -translate-y-1/2">
-        {/* Floating card for XL and bigger */}
         <motion.div
           style={{ y }}
           initial={{ opacity: 0, x: 100 }}
@@ -114,7 +112,7 @@ const FeaturedPublicationCard = ({ title, description, tech }) => {
         </motion.div>
       </div>
 
-      {/* Card below text for screens smaller than XL */}
+      {/* Right Floating Card - Mobile and Small Screens */}
       <div className="block xl:hidden w-full flex justify-center">
         <motion.div
           style={{ y }}
@@ -126,7 +124,7 @@ const FeaturedPublicationCard = ({ title, description, tech }) => {
             transition: { duration: 0.4 },
           }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-          className="w-[320px] h-[600px] bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl flex flex-col items-center justify-center gap-6 p-6 cursor-pointer mt-8"
+          className="w-[280px] h-[480px] sm:w-[300px] sm:h-[520px] bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl flex flex-col items-center justify-center gap-6 p-6 cursor-pointer mt-8"
         >
           <FloatingCardContent />
         </motion.div>
