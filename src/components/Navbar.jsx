@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
@@ -20,6 +20,19 @@ export default function Navbar() {
     { text: "Volunteering and Leadership", href: "#volunteers" },
     { text: "Github Journey", href: "#github" },
   ];
+
+  // Disable scroll when drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   const slideVariants = {
     hidden: { x: "100%" },
