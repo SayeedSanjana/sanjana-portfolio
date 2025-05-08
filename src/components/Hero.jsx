@@ -8,6 +8,7 @@ export default function Hero() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [isHoveringImage, setIsHoveringImage] = useState(false);
   const [showWheel, setShowWheel] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Mouse tracking for blob
   useEffect(() => {
@@ -16,6 +17,16 @@ export default function Hero() {
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Detect mobile screen
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+    return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
   // Scroll trigger for wheel visibility
@@ -84,25 +95,27 @@ export default function Hero() {
         className="absolute inset-0 z-0"
       />
 
-      {/* Blob following mouse */}
-      <motion.div
-        className="fixed top-0 left-0 w-52 h-52 bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-300 rounded-full mix-blend-multiply blur-3xl pointer-events-none z-10"
-        animate={{
-          x: mouse.x - 150,
-          y: mouse.y - 150,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 120,
-          damping: 20,
-        }}
-        style={{
-          opacity: 1,
-          boxShadow: "0 0 60px 20px rgba(147, 51, 234, 0.4)",
-          filter: "blur(50px)",
-          backdropFilter: "blur(20px)",
-        }}
-      />
+      {/* Blob following mouse (only for non-mobile) */}
+      {!isMobile && (
+        <motion.div
+          className="fixed top-0 left-0 w-52 h-52 bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-300 rounded-full mix-blend-multiply blur-3xl pointer-events-none z-10"
+          animate={{
+            x: mouse.x - 150,
+            y: mouse.y - 150,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 120,
+            damping: 20,
+          }}
+          style={{
+            opacity: 1,
+            boxShadow: "0 0 60px 20px rgba(147, 51, 234, 0.4)",
+            filter: "blur(50px)",
+            backdropFilter: "blur(20px)",
+          }}
+        />
+      )}
 
       {/* Wheel */}
       {showWheel && (
@@ -150,7 +163,7 @@ export default function Hero() {
 
       {/* Hero Content */}
       <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center max-w-7xl mx-auto p-8 cursor-none">
-        {/* Left Side (TEXT ONLY - motion wrapped) */}
+        {/* Left Side */}
         <motion.div
           style={{
             opacity: useTransform(scrollYProgress, [0, 0.04], [1, 0]),
@@ -174,7 +187,7 @@ export default function Hero() {
               </span>
             </h1>
           </div>
-          <h2 className="text-xl  font-semibold text-gray-700">
+          <h2 className="text-xl font-semibold text-gray-700">
             Software Engineer | Fullstack Developer | AI Enthusiast | Technical
             Problem Solver | DevOps Enthusiast
           </h2>
@@ -196,7 +209,6 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-6">
-            {/* View Resume */}
             <a
               href="/SanjanaSayeed-Resume.pdf"
               target="_blank"
@@ -206,7 +218,6 @@ export default function Hero() {
               <span className="relative z-10">View Resume</span>
             </a>
 
-            {/* Contact Me */}
             <a
               href="mailto:sanjanasayeed68@gmail.com"
               className="btn-wave group relative inline-flex items-center justify-center px-6 py-3 rounded-full text-purple-700 border-2 border-purple-700 bg-white font-semibold tracking-wide overflow-hidden cursor-pointer"
