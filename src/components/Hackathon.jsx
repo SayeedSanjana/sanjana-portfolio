@@ -24,10 +24,10 @@ const Hackathon = () => {
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
           y: parallaxEffect,
-          opacity: 0.5, // reduce opacity for background image
+          opacity: 0.5,
         }}
       >
-        <div className="absolute inset-0 bg-purple-50/30" /> {/* slight tint */}
+        <div className="absolute inset-0 bg-purple-50/30" />
       </motion.div>
 
       {/* Main Content */}
@@ -39,7 +39,6 @@ const Hackathon = () => {
 
           {/* Timeline */}
           <div className="relative">
-            {/* Vertical Line */}
             <div className="absolute top-0 left-6 md:left-6 w-[2px] h-full bg-purple-300" />
 
             <div className="space-y-16 pl-8 md:pl-16">
@@ -51,16 +50,37 @@ const Hackathon = () => {
                 githubLink1="https://github.com/SayeedSanjana/conuhacks_sap_challenge"
                 githubLink2="https://github.com/SayeedSanjana/conuhacks_sap_challenge_clientside"
                 githubLink3="https://devpost.com/software/conuhacks_sap_challenge"
+                techStack={[
+                  "Python",
+                  "Flask",
+                  "Vue.js",
+                  "TailwindCSS",
+                  "MongoDB",
+                  "Pandas",
+                  "Scikit-learn",
+                  "Real-time Data Streams",
+                  "Random Forest Model",
+                ]}
               />
-              {/* <TimelineItem
+              <TimelineItem
                 title="JACHacks"
                 institution="John Abbott College, Montreal, Canada"
                 date="April 2025"
-                description="Participated in an interdisciplinary hackathon focusing on social impact solutions using IoT and AI technologies. Our project centered around building an affordable smart sensor system for environmental monitoring in urban communities."
-                githubLink1="https://github.com/your-github-link"
-                githubLink2="https://github.com/your-github-link"
-                githubLink3="https://github.com/your-github-link"
-              /> */}
+                description="Doable is a progressive web application that I built during JACHacks to revolutionize the travel planning experience. Whether you're organizing a detailed itinerary or making spontaneous plans, Doable empowers users to turn travel ideas into safe, personalized adventures with the help of an AI companion. Featuring intelligent trip planning, real-time suggestions, and an instant 'Spontaneous Mode', it adapts to both planners and impulsive explorers. Doable ensures a seamless and secure experience for modern travelers who want to make every journey truly doable."
+                githubLink1="https://github.com/SayeedSanjana/Doable/tree/main/doable-api"
+                githubLink2="https://github.com/SayeedSanjana/Doable/tree/main/doable-app"
+                githubLink3="https://devpost.com/software/doable"
+                techStack={[
+                  "Next.js",
+                  "Tailwind CSS",
+                  "Node.js",
+                  "Express.js",
+                  "TypeScript",
+                  "Gemini AI",
+                  "MongoDB Atlas",
+                  "Auth0",
+                ]}
+              />
             </div>
           </div>
         </div>
@@ -77,6 +97,7 @@ const TimelineItem = ({
   githubLink1,
   githubLink2,
   githubLink3,
+  techStack,
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-100px" });
@@ -98,7 +119,7 @@ const TimelineItem = ({
       <div className="w-4 h-4 bg-purple-600 rounded-full mt-2"></div>
 
       {/* Content */}
-      <div className="flex-1 text-left ">
+      <div className="flex-1 text-left">
         <h3 className="text-xl md:text-2xl font-bold text-purple-600">
           {title}
         </h3>
@@ -108,7 +129,24 @@ const TimelineItem = ({
           <p className="text-base text-gray-600 mb-4">{description}</p>
         )}
 
-        {/* GitHub Buttons Side-by-Side */}
+        {/* Tech Stack */}
+        {techStack && techStack.length > 0 && (
+          <div className="mb-4">
+            <h4 className="font-semibold text-purple-700 mb-2">Tech Stack:</h4>
+            <ul className="flex flex-wrap gap-2">
+              {techStack.map((tech, index) => (
+                <li
+                  key={index}
+                  className="text-sm px-3 py-1 bg-purple-100 text-purple-800 rounded-full border border-purple-200"
+                >
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* GitHub Buttons */}
         {(githubLink1 || githubLink2 || githubLink3) && (
           <div className="flex flex-wrap gap-4 mt-4">
             {githubLink1 && (
