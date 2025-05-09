@@ -100,38 +100,41 @@ const TimelineItem = ({ title, institution, date, courses }) => {
       transition={{ duration: 1.2, ease: "easeOut" }}
       className="relative flex items-start gap-4"
     >
-      {/* Year Indicator with Dot */}
+      {/* Year badge - visible only on large screens */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 1, ease: "easeOut" }}
         className="absolute -left-28 md:-left-36 top-0"
       >
-        <div className="md:flex flex-col items-center space-y-1 hidden">
-          <div className="text-sm md:text-base text-purple-700 font-bold bg-purple-100 border border-purple-300 rounded-full px-3 py-1 shadow-md">
+        <div className="hidden lg:flex flex-col items-center space-y-1">
+          <div className="text-sm text-purple-700 font-bold bg-purple-100 border border-purple-300 rounded-full px-3 py-1 shadow-md">
             {date}
           </div>
-          {/* <div className="w-2 h-2 bg-purple-700 rounded-full" /> */}
         </div>
       </motion.div>
 
       {/* Timeline Bullet */}
       <div className="md:w-0 md:h-0 w-4 h-4 bg-purple-600 rounded-full md:mt-2" />
 
-      {/* Content */}
+      {/* Main content */}
       <div className="flex-1 text-left">
         <h3 className="text-lg md:text-2xl font-bold text-purple-600">
           {title}
         </h3>
         <p className="text-base md:text-lg text-gray-700">{institution}</p>
-        <p className="text-sm text-gray-600 mb-4">{date}</p>
+
+        {/* Date visible only on small/medium screens, wraps if needed */}
+        <div className="block lg:hidden text-sm text-gray-600 mb-4 break-words">
+          {date}
+        </div>
 
         {/* Courses */}
         <div className="flex flex-wrap gap-3">
           {courses.map((course, index) => (
             <span
               key={index}
-              className="bg-purple-100 text-purple-600 md:px-3 md:py-2  py-1 px-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-xs md:text-sm font-semibold shadow-sm"
+              className="bg-purple-100 text-purple-600 md:px-3 md:py-2 py-1 px-2 hover:bg-purple-200 transition duration-300 border border-purple-300 rounded-full text-xs md:text-sm font-semibold shadow-sm"
             >
               {course}
             </span>
