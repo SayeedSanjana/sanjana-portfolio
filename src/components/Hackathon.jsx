@@ -53,8 +53,10 @@ const Hackathon = () => {
                 techStack={[
                   "Python",
                   "Flask",
-                  "Vue.js",
+                  "React",
+                  "Leaflet.js",
                   "TailwindCSS",
+                  "Typescript",
                   "MongoDB",
                   "Pandas",
                   "Scikit-learn",
@@ -72,6 +74,7 @@ const Hackathon = () => {
                 githubLink3="https://devpost.com/software/doable"
                 techStack={[
                   "Next.js",
+                  "React",
                   "Tailwind CSS",
                   "Node.js",
                   "Express.js",
