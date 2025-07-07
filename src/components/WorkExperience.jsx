@@ -4,6 +4,20 @@ import { motion, useScroll, useInView, useTransform } from "framer-motion";
 // Example Work Experience Data
 const experienceData = [
   {
+    title: "Full Stack Developer",
+    date: "Apr 2024 - Apr 2025",
+    company:
+      "Bangali Abhibashi Network: a Glocal Linguo-cultural Association, B.A.N.G.L.A.",
+    points: [
+      "Built a responsive magazine site and content management to showcase articles, photos, and videos.",
+      "Created Vue.js frontend Vercel deployment reduced latency by 30%.",
+      "Developed real-time REST APIs with Node.js and SQLite handling 1,000+ daily requests for content operations.",
+      "Deployed on DigitalOcean with NGINX, supporting 1,000+ concurrent users.",
+      "Implemented IP-based rate limiting of 20 req/IP to ensure system stability.",
+      "Automated publishing workflows using Google Sheets and Drive for 50+ articles and media assets.",
+    ],
+  },
+  {
     title: "Software Engineer I",
     date: "Sep 2021 - Oct 2022",
     company: "Rainier Technologies, Dhaka, Bangladesh",
